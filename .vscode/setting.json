@@ -1,0 +1,33 @@
+
+{
+  "editor.formatOnSave": true,
+  "cSpell.words": [
+    "agw",
+    "au",
+    "auth",
+    "ax",
+    "ca",
+    "com",
+    "d",
+    "dev",
+    "dev i mygc au auth com",
+    "en",
+    "i",
+    "k",
+    "lilg",
+    "mygc",
+    "n",
+    "o",
+    "o zw ca lilg k en ax d agw wd sova n q",
+    "q",
+    "sova",
+    "tkeshi",
+    "wd",
+    "zw"
+  ],
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#354171",
+    "activityBar.foreground": "#000000"
+  },
+  "workbench.useExperimentalGridLayout": true
+}

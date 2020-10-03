@@ -1,26 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Home } from './components/Home';
+import { StoreProviders } from './store/StoreProviders';
+import { useAuthCtx } from './containers/contexts/auth';
+import { LogIn } from './components/4pages';
 
-function App() {
+export const App = () => {
+  const {state: {token}} = useAuthCtx()
+
+  if(token) {
+    return <LogIn />
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <StoreProviders>
+        <Switch>
+          <Route path="/" components={Home} />
+        </Switch>
+      </StoreProviders>
+    </Router>
   );
-}
-
-export default App;
+};
