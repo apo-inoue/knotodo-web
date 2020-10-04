@@ -18,9 +18,15 @@ export const CustomApolloProvider: FC = ({ children }) => {
   }, [getIdTokenClaims]);
   if (!tokenState) {
     getToken()
-      .then(res => setTokenState(res))
+      .then(res => {
+        setTokenState(res);
+
+        // eslint-disable-next-line no-console
+        return console.log(res);
+      })
+
       // eslint-disable-next-line no-console
-      .catch(e => console.log(e));
+      .catch(() => new Error());
   }
 
   const client = new ApolloClient({

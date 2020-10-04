@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Todos } from '../../types/graphql';
 import { Box } from '../../ui';
-import { TodoListItem, SwipeTodo } from '../2single';
+import { TodoListItem } from '../2single';
 
 type TodoType = { __typename: 'todos' } & Pick<
   Todos,
@@ -20,22 +20,14 @@ type TodayTodoSwipeProps = {
   onDelete: (id: string) => void;
 };
 
-export const TodayTodoSwipe: FC<TodayTodoSwipeProps> = ({
-  todo,
-  onPress,
-  onPostpone,
-  onDelete,
-}) => {
+export const TodayTodoSwipe: FC<TodayTodoSwipeProps> = ({ todo, onPress }) => {
   const onPressEffectHandler = () => {
     onPress(todo.id);
   };
-  const onPostponeEffectHandler = () => {
-    onPostpone(todo.id);
-  };
 
   return (
-    <Box>
-      <Box pl={4} flexDirection="row" flex={1} alignItems="center">
+    <Box flexDirection="row" flex={1} width="100%">
+      {/* <Box pl={4} flexDirection="row" flex={1} alignItems="center">
         <Box flexDirection="column" alignItems="flex-end" width="100%">
           <SwipeTodo
             todo={todo}
@@ -44,7 +36,7 @@ export const TodayTodoSwipe: FC<TodayTodoSwipeProps> = ({
             onDelete={onDelete}
           />
         </Box>
-      </Box>
+      </Box> */}
       <Box width="100%" bg="white">
         <TodoListItem
           todo={todo}

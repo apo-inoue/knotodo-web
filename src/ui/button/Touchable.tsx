@@ -20,15 +20,56 @@ export interface TouchableProps
   extends React.ComponentPropsWithoutRef<'button'> {
   variant?: 'outlined' | 'contained' | 'text';
   color?: 'primary' | 'muted' | 'danger';
+  btnSize?: 'md' | 'lg';
+  stretch?: boolean;
+  center?: boolean;
 }
 
 export const Touchable = styled.button<TouchableProps & TouchableType>`
-  align-items: center;
   border-radius: 4px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+  min-width: 0;
   padding: 8px 12px;
+
+  ${props =>
+    props.center && {
+      alignSelf: 'center',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }}
+
+  ${props => props.stretch && { width: '100%' }}
+
+  ${props =>
+    props.color === 'primary' &&
+    props.variant === 'contained' && {
+      backgroundColor: props.theme.colors.main,
+    }}
+
+  ${props =>
+    props.color === 'primary' &&
+    props.variant === 'outlined' && {
+      border: `1px solid ${props.theme.colors.main}`,
+      padding: '7px 13px',
+    }}
+
+  ${props =>
+    props.color === 'muted' &&
+    props.variant === 'contained' && {
+      backgroundColor: props.theme.colors.muted,
+      padding: '7px 13px',
+    }}
+
+  ${props =>
+    props.color === 'muted' &&
+    props.variant === 'outlined' && {
+      border: `1px solid ${props.theme.colors.muted}`,
+    }}
+
+  ${props =>
+    props.btnSize &&
+    props.btnSize === 'lg' && {
+      padding: '10px 20px',
+    }}
 
   ${layout}
   ${flexbox}

@@ -1,19 +1,24 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { space, SpaceProps } from 'styled-system';
 
-type Container = Partial<{
+type ContainerProps = Partial<{
   fill: boolean;
   fullWidth: boolean;
   centerContent: boolean;
 }> &
   SpaceProps;
 
-export const Container = styled.div<Container>`
-  align-items: flex-start;
+export const Container = styled.div<ContainerProps>`
+  align-items: center;
   background-color: ${props => props.theme.colors.white};
   flex: 1;
-  padding-left: 4px;
-  padding-right: 4px;
+  height: 100%;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+  width: 100%;
 
   ${space}
 
@@ -21,8 +26,8 @@ export const Container = styled.div<Container>`
   ${props => props.fullWidth && 'width: 100%'}
   ${props =>
     props.centerContent &&
-    `
-    justifyContent: center;
-    alignItems: center;
-  `}
+    css`
+      align-items: center;
+      justify-content: center;
+    `}
 `;

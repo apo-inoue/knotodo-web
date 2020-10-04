@@ -1,21 +1,36 @@
 import React, { FC } from 'react';
 import { Container } from '../../ui';
 import {
-  useCompletedTodosQuery,
   useDeleteToDoMutation,
   useRestoreNotTodayMutation,
   CompletedTodosQuery,
   useRestoreTodayMutation,
+  Todos,
 } from '../../types/graphql';
 import { ArchiveTodosCollection } from '../3collection';
-import { ErrorMessage } from '../1standalone/ErrorMessage';
-import { NoDataMessage } from '../1standalone/NoDataMessage';
-import { COMPLETED_TODOS } from '../../graphql/query/todos';
-
+import {
+  COMPLETED_TODOS,
+  TODAY_TODOS,
+  NOT_TODAY_TODOS,
+} from '../../graphql/query/todos';
 import { useSortFilterCtx } from '../../containers/contexts/sortFilter';
-import { Loader } from '../../ui/utils/Loader';
 
-export const ArchiveTodos: FC = () => {
+type ArchiveTodosProps = {
+  todos: ({
+    __typename: 'todos';
+  } & Pick<
+    Todos,
+    | 'urgency'
+    | 'workload'
+    | 'id'
+    | 'title'
+    | 'isCompleted'
+    | 'isToday'
+    | 'category_id'
+  >)[];
+};
+
+export const ArchiveTodos: FC<ArchiveTodosProps> = ({ todos }) => {
   const {
     sort: { sortState },
     filter: {
@@ -23,10 +38,23 @@ export const ArchiveTodos: FC = () => {
     },
   } = useSortFilterCtx();
   const categoryIdsVariables = isAll ? null : categoryIds;
-  const { loading, error, data } = useCompletedTodosQuery({
-    variables: { [sortState.key]: sortState.order, _in: categoryIdsVariables },
-  });
   const [deleteToDo] = useDeleteToDoMutation({
+    refetchQueries: [
+      {
+        query: TODAY_TODOS,
+        variables: {
+          [sortState.key]: sortState.order,
+          _in: categoryIdsVariables,
+        },
+      },
+      {
+        query: NOT_TODAY_TODOS,
+        variables: {
+          [sortState.key]: sortState.order,
+          _in: categoryIdsVariables,
+        },
+      },
+    ],
     update(cache, { data: updateData }) {
       const existingTodos = cache.readQuery<CompletedTodosQuery>({
         query: COMPLETED_TODOS,
@@ -54,6 +82,22 @@ export const ArchiveTodos: FC = () => {
   };
   // ---------- restoreToday ----------
   const [restoreToday] = useRestoreTodayMutation({
+    refetchQueries: [
+      {
+        query: TODAY_TODOS,
+        variables: {
+          [sortState.key]: sortState.order,
+          _in: categoryIdsVariables,
+        },
+      },
+      {
+        query: NOT_TODAY_TODOS,
+        variables: {
+          [sortState.key]: sortState.order,
+          _in: categoryIdsVariables,
+        },
+      },
+    ],
     update(cache, { data: updateData }) {
       const existingTodos = cache.readQuery<CompletedTodosQuery>({
         query: COMPLETED_TODOS,
@@ -81,6 +125,22 @@ export const ArchiveTodos: FC = () => {
   };
   // ---------- restoreNotToday ----------
   const [restoreNotToday] = useRestoreNotTodayMutation({
+    refetchQueries: [
+      {
+        query: TODAY_TODOS,
+        variables: {
+          [sortState.key]: sortState.order,
+          _in: categoryIdsVariables,
+        },
+      },
+      {
+        query: NOT_TODAY_TODOS,
+        variables: {
+          [sortState.key]: sortState.order,
+          _in: categoryIdsVariables,
+        },
+      },
+    ],
     update(cache, { data: updateData }) {
       const existingTodos = cache.readQuery<CompletedTodosQuery>({
         query: COMPLETED_TODOS,
@@ -107,24 +167,10 @@ export const ArchiveTodos: FC = () => {
     restoreNotToday({ variables: { _eq: id } });
   };
 
-  if (loading) {
-    return <Loader />;
-  }
-  if (error || !data) {
-    return (
-      <>
-        <ErrorMessage />
-      </>
-    );
-  }
-  if (data?.todos.length === 0) {
-    return <NoDataMessage />;
-  }
-
   return (
     <Container>
       <ArchiveTodosCollection
-        todos={data.todos}
+        todos={todos}
         onPress={deleteToDoHandler}
         onRestoreToday={restoreTodayHandler}
         onRestoreNotToday={restoreNotTodayHandler}

@@ -12,7 +12,7 @@ export const STACK_ROUTE_NAMES = {
   Root: 'Root',
   詳細: '詳細',
   編集: '編集',
-  新規作成: '新規作成',
+  newtodo: 'newtodo',
 } as const;
 
 export type StackRouteName = typeof STACK_ROUTE_NAMES[keyof typeof STACK_ROUTE_NAMES];

@@ -36,7 +36,7 @@ export const NotTodayTodos: FC<NotTodayTodos> = ({
   } = useTodoCtx();
   const mountAndNavigateHandler = () => {
     todoMountHandler({ isToday: false, isCompleted: false });
-    history.push(STACK_ROUTE_NAMES.新規作成);
+    history.push(STACK_ROUTE_NAMES.newtodo);
   };
 
   return (

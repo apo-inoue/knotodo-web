@@ -12,4 +12,3 @@ export { Color } from './Color';
 export { TodosSort } from './TodosSort';
 export { AccomplishmentAndMessage } from './AccomplishmentAndMessage';
 export { MessageSetting } from './MessageSetting';
-export { NewUserWelcome } from './NewUserWelcome';

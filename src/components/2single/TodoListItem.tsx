@@ -46,18 +46,19 @@ export const TodoListItem: FC<TodoListItem> = ({ todo, buttonAction }) => {
   };
 
   return (
-    <Box flexDirection="row" height={50}>
-      <Box flex="1 1" justifyContent="center">
-        <Touchable
-          p={0}
-          justifyContent="center"
-          onClick={mountAndNavigateHandler}>
+    <Box flexDirection="row" height={50} width="100%">
+      <Touchable
+        width={300}
+        p={0}
+        justifyContent="center"
+        onClick={mountAndNavigateHandler}>
+        <Box flex="1 1" justifyContent="center">
           <Text textAlign="left" ellipsis>
             {todo.title}
           </Text>
-        </Touchable>
-      </Box>
-      <Box width={100} flexDirection="row" my="auto" justifyContent="flex-end">
+        </Box>
+      </Touchable>
+      <Box width={100} flexDirection="row" justifyContent="flex-end">
         <PrimaryButton
           variant="outlined"
           onClick={() => buttonAction.onPress(todo.id)}

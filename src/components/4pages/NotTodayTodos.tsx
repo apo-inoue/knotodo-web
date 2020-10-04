@@ -1,23 +1,38 @@
 import React, { FC } from 'react';
-import { useHistory } from 'react-router-dom';
 import {
-  useNotTodayTodosQuery,
   useSetTodayTodoMutation,
   useCompleteToDoMutation,
   NotTodayTodosQuery,
   useDeleteToDoMutation,
   CompletedTodosQuery,
+  Todos,
 } from '../../types/graphql';
-import { NOT_TODAY_TODOS } from '../../graphql/query/todos';
-import { Container, ScreenLoader } from '../../ui';
-import { ErrorMessage, NoDataMessage, AddFab } from '../1standalone';
+import {
+  NOT_TODAY_TODOS,
+  TODAY_TODOS,
+  COMPLETED_TODOS,
+} from '../../graphql/query/todos';
+import { Container } from '../../ui';
 import { NotTodayTodosCollection } from '../3collection';
-import { STACK_ROUTE_NAMES } from '../routes';
 import { useSortFilterCtx } from '../../containers/contexts/sortFilter';
-import { useTodoCtx } from '../../containers/contexts/todo';
+import { COMPLETE_TODO } from '../../graphql/mutation/todo';
 
-export const NotTodayTodos: FC = () => {
-  const history = useHistory();
+type NotTodayTodosProps = {
+  todos: ({
+    __typename: 'todos';
+  } & Pick<
+    Todos,
+    | 'urgency'
+    | 'workload'
+    | 'id'
+    | 'title'
+    | 'isCompleted'
+    | 'isToday'
+    | 'category_id'
+  >)[];
+};
+
+export const NotTodayTodos: FC<NotTodayTodosProps> = ({ todos }) => {
   const {
     sort: { sortState },
     filter: {
@@ -25,11 +40,24 @@ export const NotTodayTodos: FC = () => {
     },
   } = useSortFilterCtx();
   const categoryIdsVariables = isAll ? null : categoryIds;
-  const { loading, error, data } = useNotTodayTodosQuery({
-    variables: { [sortState.key]: sortState.order, _in: categoryIdsVariables },
-  });
   // ---------- setToday ----------
   const [setToday] = useSetTodayTodoMutation({
+    refetchQueries: [
+      {
+        query: TODAY_TODOS,
+        variables: {
+          [sortState.key]: sortState.order,
+          _in: categoryIdsVariables,
+        },
+      },
+      {
+        query: COMPLETED_TODOS,
+        variables: {
+          [sortState.key]: sortState.order,
+          _in: categoryIdsVariables,
+        },
+      },
+    ],
     update(cache, { data: updateData }) {
       const existingTodos = cache.readQuery<NotTodayTodosQuery>({
         query: NOT_TODAY_TODOS,
@@ -57,6 +85,22 @@ export const NotTodayTodos: FC = () => {
   };
   // ---------- complete ----------
   const [completeTodo] = useCompleteToDoMutation({
+    refetchQueries: [
+      {
+        query: TODAY_TODOS,
+        variables: {
+          [sortState.key]: sortState.order,
+          _in: categoryIdsVariables,
+        },
+      },
+      {
+        query: COMPLETE_TODO,
+        variables: {
+          [sortState.key]: sortState.order,
+          _in: categoryIdsVariables,
+        },
+      },
+    ],
     update(cache, { data: updateData }) {
       const existingTodos = cache.readQuery<NotTodayTodosQuery>({
         query: NOT_TODAY_TODOS,
@@ -83,15 +127,24 @@ export const NotTodayTodos: FC = () => {
     completeTodo({ variables: { _eq: id } });
   };
 
-  const {
-    newTodo: { todoMountHandler },
-  } = useTodoCtx();
-  const mountAndNavigateHandler = () => {
-    todoMountHandler({ isToday: false, isCompleted: false });
-    history.push(STACK_ROUTE_NAMES.新規作成);
-  };
   // ---------- delete ----------
   const [deleteToDo] = useDeleteToDoMutation({
+    refetchQueries: [
+      {
+        query: TODAY_TODOS,
+        variables: {
+          [sortState.key]: sortState.order,
+          _in: categoryIdsVariables,
+        },
+      },
+      {
+        query: COMPLETE_TODO,
+        variables: {
+          [sortState.key]: sortState.order,
+          _in: categoryIdsVariables,
+        },
+      },
+    ],
     update(cache, { data: updateData }) {
       const existingTodos = cache.readQuery<NotTodayTodosQuery>({
         query: NOT_TODAY_TODOS,
@@ -118,31 +171,10 @@ export const NotTodayTodos: FC = () => {
     deleteToDo({ variables: { _eq: id } });
   };
 
-  // useEffect(
-  //   useCallback(() => {
-  //     refetch();
-  //   }, [refetch]),
-  // );
-
-  if (loading) {
-    return <ScreenLoader />;
-  }
-  if (error || !data) {
-    return <ErrorMessage />;
-  }
-  if (data?.todos.length === 0) {
-    return (
-      <>
-        <NoDataMessage />
-        <AddFab onClick={mountAndNavigateHandler} />
-      </>
-    );
-  }
-
   return (
     <Container>
       <NotTodayTodosCollection
-        todos={data.todos}
+        todos={todos}
         onPress={setTodayHandler}
         onComplete={completeTodoHandler}
         onDelete={deleteToDoHandler}

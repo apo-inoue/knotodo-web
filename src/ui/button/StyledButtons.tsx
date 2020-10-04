@@ -35,7 +35,9 @@ export const DangerButton = (
   );
 };
 
-export const DisabledButton = (props: TouchableProps & { text: string }) => {
+export const DisabledButton = (
+  props: TouchableProps & TouchableType & { text: string },
+) => {
   const theme = useTheme();
   const { variant, text } = props;
 

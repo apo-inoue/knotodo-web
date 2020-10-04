@@ -1,5 +1,33 @@
 import { gql } from '@apollo/client';
 
+export const GET_ALL_TODOS = gql`
+  query GetAllTodos(
+    $created_at: order_by = null
+    $urgency: order_by = null
+    $workload: order_by = null
+    $_in: [uuid!]
+  ) {
+    todos(
+      where: {
+        _and: { deleted_at: { _is_null: true }, category_id: { _in: $_in } }
+      }
+      order_by: {
+        created_at: $created_at
+        urgency: $urgency
+        workload: $workload
+      }
+    ) {
+      id
+      title
+      urgency
+      workload
+      isCompleted
+      isToday
+      category_id
+    }
+  }
+`;
+
 export const TODAY_TODOS = gql`
   query todayTodos(
     $created_at: order_by = null

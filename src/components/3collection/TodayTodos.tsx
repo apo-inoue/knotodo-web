@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Box, Divider } from '../../ui';
+import { useTheme } from 'styled-components';
+import { Box } from '../../ui';
 import { Todos } from '../../types/graphql';
 import { TodayTodoSwipe } from './TodayTodoSwipe';
 import { AddFab } from '../1standalone';
@@ -30,33 +31,32 @@ export const TodayTodos: FC<TodayTodos> = ({
   onPostpone,
   onDelete,
 }) => {
+  const theme = useTheme();
   const history = useHistory();
   const {
     newTodo: { todoMountHandler },
   } = useTodoCtx();
   const mountAndNavigateHandler = () => {
     todoMountHandler({ isToday: true, isCompleted: false });
-    history.push(STACK_ROUTE_NAMES.新規作成);
+    history.push(STACK_ROUTE_NAMES.newtodo);
   };
 
   return (
     <>
-      <Box mt={2} width="100%" flex={1}>
-        {todos.map((todo, index) => {
-          const isLastRow = todos.length - 1 === index;
-
+      <Box mt={2} width="100%" flex={1} flexDirection="column">
+        {todos.map(todo => {
           return (
-            <Box key={todo.id}>
+            <Box
+              flexDirection="row"
+              key={todo.id}
+              width="100%"
+              mt={theme.space[1]}>
               <TodayTodoSwipe
                 todo={todo}
                 onPress={onPress}
                 onPostpone={onPostpone}
                 onDelete={onDelete}
               />
-              <Box width="100%" />
-              <Divider />
-              {/* // NOTE: FABが重なって押しにくくなるのを避けるため余白を追加する */}
-              {isLastRow && <Box mb={5} />}
             </Box>
           );
         })}

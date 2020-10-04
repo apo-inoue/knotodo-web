@@ -1,10 +1,7 @@
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-
 export type Maybe<T> = T | null;
-export type Exact<T extends { [key: string]: unknown }> = {
-  [K in keyof T]: T[K];
-};
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -122,7 +119,7 @@ export type Accomplishment_Pk_Columns_Input = {
 };
 
 /** select columns of table "accomplishment" */
-export type Accomplishment_Select_Column =
+export type Accomplishment_Select_Column = 
   /** column name */
   | 'id'
   /** column name */
@@ -147,6 +144,7 @@ export type Categories = {
   user_by_id: Users;
 };
 
+
 /** columns and relationships of "categories" */
 export type CategoriesCategory_By_TodoArgs = {
   distinct_on: Maybe<Array<Todos_Select_Column>>;
@@ -155,6 +153,7 @@ export type CategoriesCategory_By_TodoArgs = {
   order_by: Maybe<Array<Todos_Order_By>>;
   where: Maybe<Todos_Bool_Exp>;
 };
+
 
 /** columns and relationships of "categories" */
 export type CategoriesCategory_By_Todo_AggregateArgs = {
@@ -185,9 +184,9 @@ export type Categories_Bool_Exp = {
 };
 
 /** unique or primary key constraints on table "categories" */
-export type Categories_Constraint =
+export type Categories_Constraint = 
   /** unique or primary key constraint */
-  'categories_pkey';
+  | 'categories_pkey';
 
 /** input type for inserting data into table "categories" */
 export type Categories_Insert_Input = {
@@ -234,7 +233,7 @@ export type Categories_Pk_Columns_Input = {
 };
 
 /** select columns of table "categories" */
-export type Categories_Select_Column =
+export type Categories_Select_Column = 
   /** column name */
   | 'category'
   /** column name */
@@ -251,7 +250,7 @@ export type Categories_Set_Input = {
 };
 
 /** update columns of table "categories" */
-export type Categories_Update_Column =
+export type Categories_Update_Column = 
   /** column name */
   | 'category'
   /** column name */
@@ -265,6 +264,7 @@ export type ColorTypes = {
   color_type_enum: Array<Users>;
   id: Maybe<Scalars['String']>;
 };
+
 
 /** columns and relationships of "colorTypes" */
 export type ColorTypesColor_Type_EnumArgs = {
@@ -286,13 +286,13 @@ export type ColorTypes_Bool_Exp = {
 };
 
 /** unique or primary key constraints on table "colorTypes" */
-export type ColorTypes_Constraint =
+export type ColorTypes_Constraint = 
   /** unique or primary key constraint */
   | 'colorTypes_id_key'
   /** unique or primary key constraint */
   | 'colorTypes_pkey';
 
-export type ColorTypes_Enum =
+export type ColorTypes_Enum = 
   /** 2 */
   | 'BLUE'
   /** 1 */
@@ -343,7 +343,7 @@ export type ColorTypes_Pk_Columns_Input = {
 };
 
 /** select columns of table "colorTypes" */
-export type ColorTypes_Select_Column =
+export type ColorTypes_Select_Column = 
   /** column name */
   | 'color_type'
   /** column name */
@@ -356,7 +356,7 @@ export type ColorTypes_Set_Input = {
 };
 
 /** update columns of table "colorTypes" */
-export type ColorTypes_Update_Column =
+export type ColorTypes_Update_Column = 
   /** column name */
   | 'color_type'
   /** column name */
@@ -419,55 +419,66 @@ export type Mutation_Root = {
   update_users_by_pk: Maybe<Users>;
 };
 
+
 /** mutation root */
 export type Mutation_RootDelete_CategoriesArgs = {
   where: Categories_Bool_Exp;
 };
+
 
 /** mutation root */
 export type Mutation_RootDelete_Categories_By_PkArgs = {
   id: Scalars['uuid'];
 };
 
+
 /** mutation root */
 export type Mutation_RootDelete_ColorTypesArgs = {
   where: ColorTypes_Bool_Exp;
 };
+
 
 /** mutation root */
 export type Mutation_RootDelete_ColorTypes_By_PkArgs = {
   color_type: Scalars['String'];
 };
 
+
 /** mutation root */
 export type Mutation_RootDelete_TodosArgs = {
   where: Todos_Bool_Exp;
 };
+
 
 /** mutation root */
 export type Mutation_RootDelete_Todos_By_PkArgs = {
   id: Scalars['String'];
 };
 
+
 /** mutation root */
 export type Mutation_RootDelete_UrgencyArgs = {
   where: Urgency_Bool_Exp;
 };
+
 
 /** mutation root */
 export type Mutation_RootDelete_Urgency_By_PkArgs = {
   urgency_type: Scalars['String'];
 };
 
+
 /** mutation root */
 export type Mutation_RootInsert_AccomplishmentArgs = {
   objects: Array<Accomplishment_Insert_Input>;
 };
 
+
 /** mutation root */
 export type Mutation_RootInsert_Accomplishment_OneArgs = {
   object: Accomplishment_Insert_Input;
 };
+
 
 /** mutation root */
 export type Mutation_RootInsert_CategoriesArgs = {
@@ -475,11 +486,13 @@ export type Mutation_RootInsert_CategoriesArgs = {
   on_conflict: Maybe<Categories_On_Conflict>;
 };
 
+
 /** mutation root */
 export type Mutation_RootInsert_Categories_OneArgs = {
   object: Categories_Insert_Input;
   on_conflict: Maybe<Categories_On_Conflict>;
 };
+
 
 /** mutation root */
 export type Mutation_RootInsert_TodosArgs = {
@@ -487,11 +500,13 @@ export type Mutation_RootInsert_TodosArgs = {
   on_conflict: Maybe<Todos_On_Conflict>;
 };
 
+
 /** mutation root */
 export type Mutation_RootInsert_Todos_OneArgs = {
   object: Todos_Insert_Input;
   on_conflict: Maybe<Todos_On_Conflict>;
 };
+
 
 /** mutation root */
 export type Mutation_RootInsert_UsersArgs = {
@@ -499,11 +514,13 @@ export type Mutation_RootInsert_UsersArgs = {
   on_conflict: Maybe<Users_On_Conflict>;
 };
 
+
 /** mutation root */
 export type Mutation_RootInsert_Users_OneArgs = {
   object: Users_Insert_Input;
   on_conflict: Maybe<Users_On_Conflict>;
 };
+
 
 /** mutation root */
 export type Mutation_RootUpdate_CategoriesArgs = {
@@ -511,11 +528,13 @@ export type Mutation_RootUpdate_CategoriesArgs = {
   where: Categories_Bool_Exp;
 };
 
+
 /** mutation root */
 export type Mutation_RootUpdate_Categories_By_PkArgs = {
   _set: Maybe<Categories_Set_Input>;
   pk_columns: Categories_Pk_Columns_Input;
 };
+
 
 /** mutation root */
 export type Mutation_RootUpdate_ColorTypesArgs = {
@@ -523,11 +542,13 @@ export type Mutation_RootUpdate_ColorTypesArgs = {
   where: ColorTypes_Bool_Exp;
 };
 
+
 /** mutation root */
 export type Mutation_RootUpdate_ColorTypes_By_PkArgs = {
   _set: Maybe<ColorTypes_Set_Input>;
   pk_columns: ColorTypes_Pk_Columns_Input;
 };
+
 
 /** mutation root */
 export type Mutation_RootUpdate_TodosArgs = {
@@ -536,6 +557,7 @@ export type Mutation_RootUpdate_TodosArgs = {
   where: Todos_Bool_Exp;
 };
 
+
 /** mutation root */
 export type Mutation_RootUpdate_Todos_By_PkArgs = {
   _inc: Maybe<Todos_Inc_Input>;
@@ -543,11 +565,13 @@ export type Mutation_RootUpdate_Todos_By_PkArgs = {
   pk_columns: Todos_Pk_Columns_Input;
 };
 
+
 /** mutation root */
 export type Mutation_RootUpdate_UrgencyArgs = {
   _set: Maybe<Urgency_Set_Input>;
   where: Urgency_Bool_Exp;
 };
+
 
 /** mutation root */
 export type Mutation_RootUpdate_Urgency_By_PkArgs = {
@@ -555,11 +579,13 @@ export type Mutation_RootUpdate_Urgency_By_PkArgs = {
   pk_columns: Urgency_Pk_Columns_Input;
 };
 
+
 /** mutation root */
 export type Mutation_RootUpdate_UsersArgs = {
   _set: Maybe<Users_Set_Input>;
   where: Users_Bool_Exp;
 };
+
 
 /** mutation root */
 export type Mutation_RootUpdate_Users_By_PkArgs = {
@@ -568,7 +594,7 @@ export type Mutation_RootUpdate_Users_By_PkArgs = {
 };
 
 /** column ordering options */
-export type Order_By =
+export type Order_By = 
   /** in the ascending order, nulls last */
   | 'asc'
   /** in the ascending order, nulls first */
@@ -613,6 +639,7 @@ export type Query_Root = {
   users_by_pk: Maybe<Users>;
 };
 
+
 /** query root */
 export type Query_RootAccomplishmentArgs = {
   distinct_on: Maybe<Array<Accomplishment_Select_Column>>;
@@ -622,10 +649,12 @@ export type Query_RootAccomplishmentArgs = {
   where: Maybe<Accomplishment_Bool_Exp>;
 };
 
+
 /** query root */
 export type Query_RootAccomplishment_By_PkArgs = {
   id: Scalars['Int'];
 };
+
 
 /** query root */
 export type Query_RootCategoriesArgs = {
@@ -636,10 +665,12 @@ export type Query_RootCategoriesArgs = {
   where: Maybe<Categories_Bool_Exp>;
 };
 
+
 /** query root */
 export type Query_RootCategories_By_PkArgs = {
   id: Scalars['uuid'];
 };
+
 
 /** query root */
 export type Query_RootColorTypesArgs = {
@@ -650,10 +681,12 @@ export type Query_RootColorTypesArgs = {
   where: Maybe<ColorTypes_Bool_Exp>;
 };
 
+
 /** query root */
 export type Query_RootColorTypes_By_PkArgs = {
   color_type: Scalars['String'];
 };
+
 
 /** query root */
 export type Query_RootTodosArgs = {
@@ -664,6 +697,7 @@ export type Query_RootTodosArgs = {
   where: Maybe<Todos_Bool_Exp>;
 };
 
+
 /** query root */
 export type Query_RootTodos_AggregateArgs = {
   distinct_on: Maybe<Array<Todos_Select_Column>>;
@@ -673,10 +707,12 @@ export type Query_RootTodos_AggregateArgs = {
   where: Maybe<Todos_Bool_Exp>;
 };
 
+
 /** query root */
 export type Query_RootTodos_By_PkArgs = {
   id: Scalars['String'];
 };
+
 
 /** query root */
 export type Query_RootUrgencyArgs = {
@@ -687,10 +723,12 @@ export type Query_RootUrgencyArgs = {
   where: Maybe<Urgency_Bool_Exp>;
 };
 
+
 /** query root */
 export type Query_RootUrgency_By_PkArgs = {
   urgency_type: Scalars['String'];
 };
+
 
 /** query root */
 export type Query_RootUsersArgs = {
@@ -700,6 +738,7 @@ export type Query_RootUsersArgs = {
   order_by: Maybe<Array<Users_Order_By>>;
   where: Maybe<Users_Bool_Exp>;
 };
+
 
 /** query root */
 export type Query_RootUsers_By_PkArgs = {
@@ -737,6 +776,7 @@ export type Subscription_Root = {
   users_by_pk: Maybe<Users>;
 };
 
+
 /** subscription root */
 export type Subscription_RootAccomplishmentArgs = {
   distinct_on: Maybe<Array<Accomplishment_Select_Column>>;
@@ -746,10 +786,12 @@ export type Subscription_RootAccomplishmentArgs = {
   where: Maybe<Accomplishment_Bool_Exp>;
 };
 
+
 /** subscription root */
 export type Subscription_RootAccomplishment_By_PkArgs = {
   id: Scalars['Int'];
 };
+
 
 /** subscription root */
 export type Subscription_RootCategoriesArgs = {
@@ -760,10 +802,12 @@ export type Subscription_RootCategoriesArgs = {
   where: Maybe<Categories_Bool_Exp>;
 };
 
+
 /** subscription root */
 export type Subscription_RootCategories_By_PkArgs = {
   id: Scalars['uuid'];
 };
+
 
 /** subscription root */
 export type Subscription_RootColorTypesArgs = {
@@ -774,10 +818,12 @@ export type Subscription_RootColorTypesArgs = {
   where: Maybe<ColorTypes_Bool_Exp>;
 };
 
+
 /** subscription root */
 export type Subscription_RootColorTypes_By_PkArgs = {
   color_type: Scalars['String'];
 };
+
 
 /** subscription root */
 export type Subscription_RootTodosArgs = {
@@ -788,6 +834,7 @@ export type Subscription_RootTodosArgs = {
   where: Maybe<Todos_Bool_Exp>;
 };
 
+
 /** subscription root */
 export type Subscription_RootTodos_AggregateArgs = {
   distinct_on: Maybe<Array<Todos_Select_Column>>;
@@ -797,10 +844,12 @@ export type Subscription_RootTodos_AggregateArgs = {
   where: Maybe<Todos_Bool_Exp>;
 };
 
+
 /** subscription root */
 export type Subscription_RootTodos_By_PkArgs = {
   id: Scalars['String'];
 };
+
 
 /** subscription root */
 export type Subscription_RootUrgencyArgs = {
@@ -811,10 +860,12 @@ export type Subscription_RootUrgencyArgs = {
   where: Maybe<Urgency_Bool_Exp>;
 };
 
+
 /** subscription root */
 export type Subscription_RootUrgency_By_PkArgs = {
   urgency_type: Scalars['String'];
 };
+
 
 /** subscription root */
 export type Subscription_RootUsersArgs = {
@@ -825,10 +876,12 @@ export type Subscription_RootUsersArgs = {
   where: Maybe<Users_Bool_Exp>;
 };
 
+
 /** subscription root */
 export type Subscription_RootUsers_By_PkArgs = {
   id: Scalars['String'];
 };
+
 
 /** expression to compare columns of type timestamptz. All fields are combined with logical 'AND'. */
 export type Timestamptz_Comparison_Exp = {
@@ -845,8 +898,8 @@ export type Timestamptz_Comparison_Exp = {
 
 /**
  * urgency
- *
- *
+ * 
+ * 
  * columns and relationships of "todos"
  */
 export type Todos = {
@@ -891,6 +944,7 @@ export type Todos_Aggregate_Fields = {
   var_samp: Maybe<Todos_Var_Samp_Fields>;
   variance: Maybe<Todos_Variance_Fields>;
 };
+
 
 /** aggregate fields of "todos" */
 export type Todos_Aggregate_FieldsCountArgs = {
@@ -951,9 +1005,9 @@ export type Todos_Bool_Exp = {
 };
 
 /** unique or primary key constraints on table "todos" */
-export type Todos_Constraint =
+export type Todos_Constraint = 
   /** unique or primary key constraint */
-  'todo_pkey';
+  | 'todo_pkey';
 
 /** input type for incrementing integer column in table "todos" */
 export type Todos_Inc_Input = {
@@ -1063,7 +1117,7 @@ export type Todos_Pk_Columns_Input = {
 };
 
 /** select columns of table "todos" */
-export type Todos_Select_Column =
+export type Todos_Select_Column = 
   /** column name */
   | 'category_id'
   /** column name */
@@ -1142,7 +1196,7 @@ export type Todos_Sum_Order_By = {
 };
 
 /** update columns of table "todos" */
-export type Todos_Update_Column =
+export type Todos_Update_Column = 
   /** column name */
   | 'category_id'
   /** column name */
@@ -1204,6 +1258,7 @@ export type Urgency = {
   urgency_type: Scalars['String'];
 };
 
+
 /** columns and relationships of "urgency" */
 export type UrgencyTodos_By_UrgencyArgs = {
   distinct_on: Maybe<Array<Todos_Select_Column>>;
@@ -1212,6 +1267,7 @@ export type UrgencyTodos_By_UrgencyArgs = {
   order_by: Maybe<Array<Todos_Order_By>>;
   where: Maybe<Todos_Bool_Exp>;
 };
+
 
 /** columns and relationships of "urgency" */
 export type UrgencyTodos_By_Urgency_AggregateArgs = {
@@ -1233,13 +1289,13 @@ export type Urgency_Bool_Exp = {
 };
 
 /** unique or primary key constraints on table "urgency" */
-export type Urgency_Constraint =
+export type Urgency_Constraint = 
   /** unique or primary key constraint */
   | 'urgency_id_key'
   /** unique or primary key constraint */
   | 'urgency_pkey';
 
-export type Urgency_Enum =
+export type Urgency_Enum = 
   /** 2 */
   | 'month'
   /** 1 */
@@ -1285,7 +1341,7 @@ export type Urgency_Pk_Columns_Input = {
 };
 
 /** select columns of table "urgency" */
-export type Urgency_Select_Column =
+export type Urgency_Select_Column = 
   /** column name */
   | 'id'
   /** column name */
@@ -1298,7 +1354,7 @@ export type Urgency_Set_Input = {
 };
 
 /** update columns of table "urgency" */
-export type Urgency_Update_Column =
+export type Urgency_Update_Column = 
   /** column name */
   | 'id'
   /** column name */
@@ -1321,6 +1377,7 @@ export type Users = {
   user_by_id: Array<Categories>;
 };
 
+
 /** columns and relationships of "users" */
 export type UsersTodos_By_UserArgs = {
   distinct_on: Maybe<Array<Todos_Select_Column>>;
@@ -1330,6 +1387,7 @@ export type UsersTodos_By_UserArgs = {
   where: Maybe<Todos_Bool_Exp>;
 };
 
+
 /** columns and relationships of "users" */
 export type UsersTodos_By_User_AggregateArgs = {
   distinct_on: Maybe<Array<Todos_Select_Column>>;
@@ -1338,6 +1396,7 @@ export type UsersTodos_By_User_AggregateArgs = {
   order_by: Maybe<Array<Todos_Order_By>>;
   where: Maybe<Todos_Bool_Exp>;
 };
+
 
 /** columns and relationships of "users" */
 export type UsersUser_By_IdArgs = {
@@ -1369,9 +1428,9 @@ export type Users_Bool_Exp = {
 };
 
 /** unique or primary key constraints on table "users" */
-export type Users_Constraint =
+export type Users_Constraint = 
   /** unique or primary key constraint */
-  'users_pkey';
+  | 'users_pkey';
 
 /** input type for inserting data into table "users" */
 export type Users_Insert_Input = {
@@ -1421,7 +1480,7 @@ export type Users_Pk_Columns_Input = {
 };
 
 /** select columns of table "users" */
-export type Users_Select_Column =
+export type Users_Select_Column = 
   /** column name */
   | 'color_type'
   /** column name */
@@ -1440,7 +1499,7 @@ export type Users_Set_Input = {
 };
 
 /** update columns of table "users" */
-export type Users_Update_Column =
+export type Users_Update_Column = 
   /** column name */
   | 'color_type'
   /** column name */
@@ -1449,6 +1508,7 @@ export type Users_Update_Column =
   | 'message'
   /** column name */
   | 'nickname';
+
 
 /** expression to compare columns of type uuid. All fields are combined with logical 'AND'. */
 export type Uuid_Comparison_Exp = {
@@ -1467,60 +1527,75 @@ export type InsertCategoryMutationVariables = Exact<{
   category?: Maybe<Scalars['String']>;
 }>;
 
-export type InsertCategoryMutation = { __typename: 'mutation_root' } & {
-  insert_categories: Maybe<
-    { __typename: 'categories_mutation_response' } & {
-      returning: Array<
-        { __typename: 'categories' } & Pick<Categories, 'category' | 'id'>
-      >;
-    }
-  >;
-};
+
+export type InsertCategoryMutation = (
+  { __typename: 'mutation_root' }
+  & { insert_categories: Maybe<(
+    { __typename: 'categories_mutation_response' }
+    & { returning: Array<(
+      { __typename: 'categories' }
+      & Pick<Categories, 'category' | 'id'>
+    )> }
+  )> }
+);
 
 export type UpdateCategoryMutationVariables = Exact<{
   id: Scalars['uuid'];
   category: Maybe<Scalars['String']>;
 }>;
 
-export type UpdateCategoryMutation = { __typename: 'mutation_root' } & {
-  update_categories_by_pk: Maybe<
-    { __typename: 'categories' } & Pick<Categories, 'id' | 'category'>
-  >;
-};
+
+export type UpdateCategoryMutation = (
+  { __typename: 'mutation_root' }
+  & { update_categories_by_pk: Maybe<(
+    { __typename: 'categories' }
+    & Pick<Categories, 'id' | 'category'>
+  )> }
+);
 
 export type DeleteCategoryMutationVariables = Exact<{
   id: Scalars['uuid'];
 }>;
 
-export type DeleteCategoryMutation = { __typename: 'mutation_root' } & {
-  update_categories_by_pk: Maybe<
-    { __typename: 'categories' } & Pick<Categories, 'id' | 'category'>
-  >;
-};
 
-export type SeedDataCategoryMutationVariables = Exact<{ [key: string]: never }>;
+export type DeleteCategoryMutation = (
+  { __typename: 'mutation_root' }
+  & { update_categories_by_pk: Maybe<(
+    { __typename: 'categories' }
+    & Pick<Categories, 'id' | 'category'>
+  )> }
+);
+
+export type SeedDataCategoryMutationVariables = Exact<{ [key: string]: never; }>;
 
 
-export type SeedDataCategoryMutation = { __typename: 'mutation_root' } & {
-  insert_categories: Maybe<
-    { __typename: 'categories_mutation_response' } & {
-      returning: Array<{ __typename: 'categories' } & Pick<Categories, 'id'>>;
-    }
-  >;
-};
+export type SeedDataCategoryMutation = (
+  { __typename: 'mutation_root' }
+  & { insert_categories: Maybe<(
+    { __typename: 'categories_mutation_response' }
+    & { returning: Array<(
+      { __typename: 'categories' }
+      & Pick<Categories, 'id'>
+    )> }
+  )> }
+);
 
 export type SeedDataTodoMutationVariables = Exact<{
   category_id_work: Maybe<Scalars['uuid']>;
   category_id_private: Maybe<Scalars['uuid']>;
 }>;
 
-export type SeedDataTodoMutation = { __typename: 'mutation_root' } & {
-  insert_todos: Maybe<
-    { __typename: 'todos_mutation_response' } & {
-      returning: Array<{ __typename: 'todos' } & Pick<Todos, 'id'>>;
-    }
-  >;
-};
+
+export type SeedDataTodoMutation = (
+  { __typename: 'mutation_root' }
+  & { insert_todos: Maybe<(
+    { __typename: 'todos_mutation_response' }
+    & { returning: Array<(
+      { __typename: 'todos' }
+      & Pick<Todos, 'id'>
+    )> }
+  )> }
+);
 
 export type InsertToDoMutationVariables = Exact<{
   title?: Maybe<Scalars['String']>;
@@ -1531,9 +1606,14 @@ export type InsertToDoMutationVariables = Exact<{
   category_id: Maybe<Scalars['uuid']>;
 }>;
 
-export type InsertToDoMutation = { __typename: 'mutation_root' } & {
-  insert_todos_one: Maybe<{ __typename: 'todos' } & Pick<Todos, 'id'>>;
-};
+
+export type InsertToDoMutation = (
+  { __typename: 'mutation_root' }
+  & { insert_todos_one: Maybe<(
+    { __typename: 'todos' }
+    & Pick<Todos, 'id'>
+  )> }
+);
 
 export type UpdateTodoMutationVariables = Exact<{
   id: Scalars['String'];
@@ -1543,132 +1623,179 @@ export type UpdateTodoMutationVariables = Exact<{
   category_id: Maybe<Scalars['uuid']>;
 }>;
 
-export type UpdateTodoMutation = { __typename: 'mutation_root' } & {
-  update_todos_by_pk: Maybe<{ __typename: 'todos' } & Pick<Todos, 'id'>>;
-};
+
+export type UpdateTodoMutation = (
+  { __typename: 'mutation_root' }
+  & { update_todos_by_pk: Maybe<(
+    { __typename: 'todos' }
+    & Pick<Todos, 'id'>
+  )> }
+);
 
 export type CompleteToDoMutationVariables = Exact<{
   _eq: Scalars['String'];
 }>;
 
-export type CompleteToDoMutation = { __typename: 'mutation_root' } & {
-  update_todos: Maybe<
-    { __typename: 'todos_mutation_response' } & Pick<
-      Todos_Mutation_Response,
-      'affected_rows'
-    > & { returning: Array<{ __typename: 'todos' } & Pick<Todos, 'id'>>; }
-  >;
-};
+
+export type CompleteToDoMutation = (
+  { __typename: 'mutation_root' }
+  & { update_todos: Maybe<(
+    { __typename: 'todos_mutation_response' }
+    & Pick<Todos_Mutation_Response, 'affected_rows'>
+    & { returning: Array<(
+      { __typename: 'todos' }
+      & Pick<Todos, 'id'>
+    )> }
+  )> }
+);
 
 export type DeleteToDoMutationVariables = Exact<{
   _eq: Scalars['String'];
 }>;
 
-export type DeleteToDoMutation = { __typename: 'mutation_root' } & {
-  update_todos: Maybe<
-    { __typename: 'todos_mutation_response' } & Pick<
-      Todos_Mutation_Response,
-      'affected_rows'
-    > & { returning: Array<{ __typename: 'todos' } & Pick<Todos, 'id'>>; }
-  >;
-};
+
+export type DeleteToDoMutation = (
+  { __typename: 'mutation_root' }
+  & { update_todos: Maybe<(
+    { __typename: 'todos_mutation_response' }
+    & Pick<Todos_Mutation_Response, 'affected_rows'>
+    & { returning: Array<(
+      { __typename: 'todos' }
+      & Pick<Todos, 'id'>
+    )> }
+  )> }
+);
 
 export type SetTodayTodoMutationVariables = Exact<{
   _eq: Scalars['String'];
 }>;
 
-export type SetTodayTodoMutation = { __typename: 'mutation_root' } & {
-  update_todos: Maybe<
-    { __typename: 'todos_mutation_response' } & Pick<
-      Todos_Mutation_Response,
-      'affected_rows'
-    > & { returning: Array<{ __typename: 'todos' } & Pick<Todos, 'id'>>; }
-  >;
-};
+
+export type SetTodayTodoMutation = (
+  { __typename: 'mutation_root' }
+  & { update_todos: Maybe<(
+    { __typename: 'todos_mutation_response' }
+    & Pick<Todos_Mutation_Response, 'affected_rows'>
+    & { returning: Array<(
+      { __typename: 'todos' }
+      & Pick<Todos, 'id'>
+    )> }
+  )> }
+);
 
 export type SetNotTodayTodoMutationVariables = Exact<{
   _eq: Scalars['String'];
 }>;
 
-export type SetNotTodayTodoMutation = { __typename: 'mutation_root' } & {
-  update_todos: Maybe<
-    { __typename: 'todos_mutation_response' } & Pick<
-      Todos_Mutation_Response,
-      'affected_rows'
-    > & { returning: Array<{ __typename: 'todos' } & Pick<Todos, 'id'>>; }
-  >;
-};
+
+export type SetNotTodayTodoMutation = (
+  { __typename: 'mutation_root' }
+  & { update_todos: Maybe<(
+    { __typename: 'todos_mutation_response' }
+    & Pick<Todos_Mutation_Response, 'affected_rows'>
+    & { returning: Array<(
+      { __typename: 'todos' }
+      & Pick<Todos, 'id'>
+    )> }
+  )> }
+);
 
 export type RestoreNotTodayMutationVariables = Exact<{
   _eq: Scalars['String'];
 }>;
 
-export type RestoreNotTodayMutation = { __typename: 'mutation_root' } & {
-  update_todos: Maybe<
-    { __typename: 'todos_mutation_response' } & Pick<
-      Todos_Mutation_Response,
-      'affected_rows'
-    > & { returning: Array<{ __typename: 'todos' } & Pick<Todos, 'id'>>; }
-  >;
-};
+
+export type RestoreNotTodayMutation = (
+  { __typename: 'mutation_root' }
+  & { update_todos: Maybe<(
+    { __typename: 'todos_mutation_response' }
+    & Pick<Todos_Mutation_Response, 'affected_rows'>
+    & { returning: Array<(
+      { __typename: 'todos' }
+      & Pick<Todos, 'id'>
+    )> }
+  )> }
+);
 
 export type RestoreTodayMutationVariables = Exact<{
   _eq: Scalars['String'];
 }>;
 
-export type RestoreTodayMutation = { __typename: 'mutation_root' } & {
-  update_todos: Maybe<
-    { __typename: 'todos_mutation_response' } & Pick<
-      Todos_Mutation_Response,
-      'affected_rows'
-    > & { returning: Array<{ __typename: 'todos' } & Pick<Todos, 'id'>>; }
-  >;
-};
+
+export type RestoreTodayMutation = (
+  { __typename: 'mutation_root' }
+  & { update_todos: Maybe<(
+    { __typename: 'todos_mutation_response' }
+    & Pick<Todos_Mutation_Response, 'affected_rows'>
+    & { returning: Array<(
+      { __typename: 'todos' }
+      & Pick<Todos, 'id'>
+    )> }
+  )> }
+);
 
 export type UpdateColorTypeMutationVariables = Exact<{
   color_type: Maybe<ColorTypes_Enum>;
   _eq: Maybe<Scalars['String']>;
 }>;
 
-export type UpdateColorTypeMutation = { __typename: 'mutation_root' } & {
-  update_users: Maybe<
-    { __typename: 'users_mutation_response' } & Pick<
-      Users_Mutation_Response,
-      'affected_rows'
-    > & {
-        returning: Array<
-          { __typename: 'users' } & Pick<Users, 'id' | 'color_type'>
-        >;
-      }
-  >;
-};
+
+export type UpdateColorTypeMutation = (
+  { __typename: 'mutation_root' }
+  & { update_users: Maybe<(
+    { __typename: 'users_mutation_response' }
+    & Pick<Users_Mutation_Response, 'affected_rows'>
+    & { returning: Array<(
+      { __typename: 'users' }
+      & Pick<Users, 'id' | 'color_type'>
+    )> }
+  )> }
+);
 
 export type UpdateUserMessageMutationVariables = Exact<{
   message: Maybe<Scalars['String']>;
   _eq: Maybe<Scalars['String']>;
 }>;
 
-export type UpdateUserMessageMutation = { __typename: 'mutation_root' } & {
-  update_users: Maybe<
-    { __typename: 'users_mutation_response' } & Pick<
-      Users_Mutation_Response,
-      'affected_rows'
-    > & {
-        returning: Array<
-          { __typename: 'users' } & Pick<Users, 'id' | 'message'>
-        >;
-      }
-  >;
-};
 
-export type AllCategoryQueryVariables = Exact<{ [key: string]: never }>;
+export type UpdateUserMessageMutation = (
+  { __typename: 'mutation_root' }
+  & { update_users: Maybe<(
+    { __typename: 'users_mutation_response' }
+    & Pick<Users_Mutation_Response, 'affected_rows'>
+    & { returning: Array<(
+      { __typename: 'users' }
+      & Pick<Users, 'id' | 'message'>
+    )> }
+  )> }
+);
+
+export type AllCategoryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type AllCategoryQuery = { __typename: 'query_root' } & {
-  categories: Array<
-    { __typename: 'categories' } & Pick<Categories, 'category' | 'id'>
-  >;
-};
+export type AllCategoryQuery = (
+  { __typename: 'query_root' }
+  & { categories: Array<(
+    { __typename: 'categories' }
+    & Pick<Categories, 'category' | 'id'>
+  )> }
+);
+
+export type GetAllTodosQueryVariables = Exact<{
+  created_at?: Maybe<Order_By>;
+  urgency?: Maybe<Order_By>;
+  workload?: Maybe<Order_By>;
+  _in: Maybe<Array<Scalars['uuid']>>;
+}>;
+
+
+export type GetAllTodosQuery = (
+  { __typename: 'query_root' }
+  & { todos: Array<(
+    { __typename: 'todos' }
+    & Pick<Todos, 'id' | 'title' | 'urgency' | 'workload' | 'isCompleted' | 'isToday' | 'category_id'>
+  )> }
+);
 
 export type TodayTodosQueryVariables = Exact<{
   created_at?: Maybe<Order_By>;
@@ -1677,20 +1804,14 @@ export type TodayTodosQueryVariables = Exact<{
   _in: Maybe<Array<Scalars['uuid']>>;
 }>;
 
-export type TodayTodosQuery = { __typename: 'query_root' } & {
-  todos: Array<
-    { __typename: 'todos' } & Pick<
-      Todos,
-      | 'id'
-      | 'title'
-      | 'urgency'
-      | 'workload'
-      | 'isCompleted'
-      | 'isToday'
-      | 'category_id'
-    >
-  >;
-};
+
+export type TodayTodosQuery = (
+  { __typename: 'query_root' }
+  & { todos: Array<(
+    { __typename: 'todos' }
+    & Pick<Todos, 'id' | 'title' | 'urgency' | 'workload' | 'isCompleted' | 'isToday' | 'category_id'>
+  )> }
+);
 
 export type NotTodayTodosQueryVariables = Exact<{
   created_at?: Maybe<Order_By>;
@@ -1699,20 +1820,14 @@ export type NotTodayTodosQueryVariables = Exact<{
   _in: Maybe<Array<Scalars['uuid']>>;
 }>;
 
-export type NotTodayTodosQuery = { __typename: 'query_root' } & {
-  todos: Array<
-    { __typename: 'todos' } & Pick<
-      Todos,
-      | 'id'
-      | 'title'
-      | 'urgency'
-      | 'workload'
-      | 'isToday'
-      | 'isCompleted'
-      | 'category_id'
-    >
-  >;
-};
+
+export type NotTodayTodosQuery = (
+  { __typename: 'query_root' }
+  & { todos: Array<(
+    { __typename: 'todos' }
+    & Pick<Todos, 'id' | 'title' | 'urgency' | 'workload' | 'isToday' | 'isCompleted' | 'category_id'>
+  )> }
+);
 
 export type CompletedTodosQueryVariables = Exact<{
   created_at?: Maybe<Order_By>;
@@ -1721,20 +1836,14 @@ export type CompletedTodosQueryVariables = Exact<{
   _in: Maybe<Array<Scalars['uuid']>>;
 }>;
 
-export type CompletedTodosQuery = { __typename: 'query_root' } & {
-  todos: Array<
-    { __typename: 'todos' } & Pick<
-      Todos,
-      | 'id'
-      | 'title'
-      | 'urgency'
-      | 'workload'
-      | 'isToday'
-      | 'isCompleted'
-      | 'category_id'
-    >
-  >;
-};
+
+export type CompletedTodosQuery = (
+  { __typename: 'query_root' }
+  & { todos: Array<(
+    { __typename: 'todos' }
+    & Pick<Todos, 'id' | 'title' | 'urgency' | 'workload' | 'isToday' | 'isCompleted' | 'category_id'>
+  )> }
+);
 
 export type GetAccomplishmentAndMessageQueryVariables = Exact<{
   _gte1: Maybe<Scalars['timestamptz']>;
@@ -1742,64 +1851,67 @@ export type GetAccomplishmentAndMessageQueryVariables = Exact<{
   _gte3: Maybe<Scalars['timestamptz']>;
 }>;
 
-export type GetAccomplishmentAndMessageQuery = { __typename: 'query_root' } & {
-  week: { __typename: 'todos_aggregate' } & {
-    aggregate: Maybe<
-      { __typename: 'todos_aggregate_fields' } & Pick<
-        Todos_Aggregate_Fields,
-        'count'
-      >
-    >;
-  };
-  month: { __typename: 'todos_aggregate' } & {
-    aggregate: Maybe<
-      { __typename: 'todos_aggregate_fields' } & Pick<
-        Todos_Aggregate_Fields,
-        'count'
-      >
-    >;
-  };
-  year: { __typename: 'todos_aggregate' } & {
-    aggregate: Maybe<
-      { __typename: 'todos_aggregate_fields' } & Pick<
-        Todos_Aggregate_Fields,
-        'count'
-      >
-    >;
-  };
-  users: Array<{ __typename: 'users' } & Pick<Users, 'message'>>;
-};
 
-export type GetColorTypeQueryVariables = Exact<{ [key: string]: never }>;
+export type GetAccomplishmentAndMessageQuery = (
+  { __typename: 'query_root' }
+  & { week: (
+    { __typename: 'todos_aggregate' }
+    & { aggregate: Maybe<(
+      { __typename: 'todos_aggregate_fields' }
+      & Pick<Todos_Aggregate_Fields, 'count'>
+    )> }
+  ), month: (
+    { __typename: 'todos_aggregate' }
+    & { aggregate: Maybe<(
+      { __typename: 'todos_aggregate_fields' }
+      & Pick<Todos_Aggregate_Fields, 'count'>
+    )> }
+  ), year: (
+    { __typename: 'todos_aggregate' }
+    & { aggregate: Maybe<(
+      { __typename: 'todos_aggregate_fields' }
+      & Pick<Todos_Aggregate_Fields, 'count'>
+    )> }
+  ), users: Array<(
+    { __typename: 'users' }
+    & Pick<Users, 'message'>
+  )> }
+);
 
-
-export type GetColorTypeQuery = { __typename: 'query_root' } & {
-  users: Array<
-    { __typename: 'users' } & Pick<Users, 'id' | 'color_type' | 'message'>
-  >;
-};
-
-export type GetUserMessageQueryVariables = Exact<{ [key: string]: never }>;
+export type GetColorTypeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetUserMessageQuery = { __typename: 'query_root' } & {
-  users: Array<{ __typename: 'users' } & Pick<Users, 'id' | 'message'>>;
-};
+export type GetColorTypeQuery = (
+  { __typename: 'query_root' }
+  & { users: Array<(
+    { __typename: 'users' }
+    & Pick<Users, 'id' | 'color_type' | 'message'>
+  )> }
+);
+
+export type GetUserMessageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetUserMessageQuery = (
+  { __typename: 'query_root' }
+  & { users: Array<(
+    { __typename: 'users' }
+    & Pick<Users, 'id' | 'message'>
+  )> }
+);
+
 
 export const InsertCategoryDocument = gql`
-  mutation InsertCategory($category: String = "") {
-    insert_categories(objects: { category: $category }) {
-      returning {
-        category
-        id
-      }
+    mutation InsertCategory($category: String = "") {
+  insert_categories(objects: {category: $category}) {
+    returning {
+      category
+      id
     }
   }
-`;
-export type InsertCategoryMutationFn = Apollo.MutationFunction<
-  InsertCategoryMutation,
-  InsertCategoryMutationVariables
->;
+}
+    `;
+export type InsertCategoryMutationFn = Apollo.MutationFunction<InsertCategoryMutation, InsertCategoryMutationVariables>;
 
 /**
  * __useInsertCategoryMutation__
@@ -1818,32 +1930,21 @@ export type InsertCategoryMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export const useInsertCategoryMutation = (baseOptions?: Apollo.MutationHookOptions<InsertCategoryMutation, InsertCategoryMutationVariables>) => Apollo.useMutation<InsertCategoryMutation, InsertCategoryMutationVariables>(InsertCategoryDocument, baseOptions);
-export type InsertCategoryMutationHookResult = ReturnType<
-  typeof useInsertCategoryMutation
->;
-export type InsertCategoryMutationResult = Apollo.MutationResult<
-  InsertCategoryMutation
->;
-export type InsertCategoryMutationOptions = Apollo.BaseMutationOptions<
-  InsertCategoryMutation,
-  InsertCategoryMutationVariables
->;
+export function useInsertCategoryMutation(baseOptions?: Apollo.MutationHookOptions<InsertCategoryMutation, InsertCategoryMutationVariables>) {
+        return Apollo.useMutation<InsertCategoryMutation, InsertCategoryMutationVariables>(InsertCategoryDocument, baseOptions);
+      }
+export type InsertCategoryMutationHookResult = ReturnType<typeof useInsertCategoryMutation>;
+export type InsertCategoryMutationResult = Apollo.MutationResult<InsertCategoryMutation>;
+export type InsertCategoryMutationOptions = Apollo.BaseMutationOptions<InsertCategoryMutation, InsertCategoryMutationVariables>;
 export const UpdateCategoryDocument = gql`
-  mutation UpdateCategory($id: uuid!, $category: String) {
-    update_categories_by_pk(
-      pk_columns: { id: $id }
-      _set: { category: $category }
-    ) {
-      id
-      category
-    }
+    mutation UpdateCategory($id: uuid!, $category: String) {
+  update_categories_by_pk(pk_columns: {id: $id}, _set: {category: $category}) {
+    id
+    category
   }
-`;
-export type UpdateCategoryMutationFn = Apollo.MutationFunction<
-  UpdateCategoryMutation,
-  UpdateCategoryMutationVariables
->;
+}
+    `;
+export type UpdateCategoryMutationFn = Apollo.MutationFunction<UpdateCategoryMutation, UpdateCategoryMutationVariables>;
 
 /**
  * __useUpdateCategoryMutation__
@@ -1863,32 +1964,21 @@ export type UpdateCategoryMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export const useUpdateCategoryMutation = (baseOptions?: Apollo.MutationHookOptions<UpdateCategoryMutation, UpdateCategoryMutationVariables>) => Apollo.useMutation<UpdateCategoryMutation, UpdateCategoryMutationVariables>(UpdateCategoryDocument, baseOptions);
-export type UpdateCategoryMutationHookResult = ReturnType<
-  typeof useUpdateCategoryMutation
->;
-export type UpdateCategoryMutationResult = Apollo.MutationResult<
-  UpdateCategoryMutation
->;
-export type UpdateCategoryMutationOptions = Apollo.BaseMutationOptions<
-  UpdateCategoryMutation,
-  UpdateCategoryMutationVariables
->;
+export function useUpdateCategoryMutation(baseOptions?: Apollo.MutationHookOptions<UpdateCategoryMutation, UpdateCategoryMutationVariables>) {
+        return Apollo.useMutation<UpdateCategoryMutation, UpdateCategoryMutationVariables>(UpdateCategoryDocument, baseOptions);
+      }
+export type UpdateCategoryMutationHookResult = ReturnType<typeof useUpdateCategoryMutation>;
+export type UpdateCategoryMutationResult = Apollo.MutationResult<UpdateCategoryMutation>;
+export type UpdateCategoryMutationOptions = Apollo.BaseMutationOptions<UpdateCategoryMutation, UpdateCategoryMutationVariables>;
 export const DeleteCategoryDocument = gql`
-  mutation DeleteCategory($id: uuid!) {
-    update_categories_by_pk(
-      pk_columns: { id: $id }
-      _set: { deleted_at: "now()" }
-    ) {
-      id
-      category
-    }
+    mutation DeleteCategory($id: uuid!) {
+  update_categories_by_pk(pk_columns: {id: $id}, _set: {deleted_at: "now()"}) {
+    id
+    category
   }
-`;
-export type DeleteCategoryMutationFn = Apollo.MutationFunction<
-  DeleteCategoryMutation,
-  DeleteCategoryMutationVariables
->;
+}
+    `;
+export type DeleteCategoryMutationFn = Apollo.MutationFunction<DeleteCategoryMutation, DeleteCategoryMutationVariables>;
 
 /**
  * __useDeleteCategoryMutation__
@@ -1907,32 +1997,22 @@ export type DeleteCategoryMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export const useDeleteCategoryMutation = (baseOptions?: Apollo.MutationHookOptions<DeleteCategoryMutation, DeleteCategoryMutationVariables>) => Apollo.useMutation<DeleteCategoryMutation, DeleteCategoryMutationVariables>(DeleteCategoryDocument, baseOptions);
-export type DeleteCategoryMutationHookResult = ReturnType<
-  typeof useDeleteCategoryMutation
->;
-export type DeleteCategoryMutationResult = Apollo.MutationResult<
-  DeleteCategoryMutation
->;
-export type DeleteCategoryMutationOptions = Apollo.BaseMutationOptions<
-  DeleteCategoryMutation,
-  DeleteCategoryMutationVariables
->;
-export const SeedDataCategoryDocument = gql`
-  mutation SeedDataCategory {
-    insert_categories(
-      objects: [{ category: "仕事" }, { category: "プライベート" }]
-    ) {
-      returning {
-        id
+export function useDeleteCategoryMutation(baseOptions?: Apollo.MutationHookOptions<DeleteCategoryMutation, DeleteCategoryMutationVariables>) {
+        return Apollo.useMutation<DeleteCategoryMutation, DeleteCategoryMutationVariables>(DeleteCategoryDocument, baseOptions);
       }
+export type DeleteCategoryMutationHookResult = ReturnType<typeof useDeleteCategoryMutation>;
+export type DeleteCategoryMutationResult = Apollo.MutationResult<DeleteCategoryMutation>;
+export type DeleteCategoryMutationOptions = Apollo.BaseMutationOptions<DeleteCategoryMutation, DeleteCategoryMutationVariables>;
+export const SeedDataCategoryDocument = gql`
+    mutation SeedDataCategory {
+  insert_categories(objects: [{category: "仕事"}, {category: "プライベート"}]) {
+    returning {
+      id
     }
   }
-`;
-export type SeedDataCategoryMutationFn = Apollo.MutationFunction<
-  SeedDataCategoryMutation,
-  SeedDataCategoryMutationVariables
->;
+}
+    `;
+export type SeedDataCategoryMutationFn = Apollo.MutationFunction<SeedDataCategoryMutation, SeedDataCategoryMutationVariables>;
 
 /**
  * __useSeedDataCategoryMutation__
@@ -1950,49 +2030,22 @@ export type SeedDataCategoryMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export const useSeedDataCategoryMutation = (baseOptions?: Apollo.MutationHookOptions<SeedDataCategoryMutation, SeedDataCategoryMutationVariables>) => Apollo.useMutation<SeedDataCategoryMutation, SeedDataCategoryMutationVariables>(SeedDataCategoryDocument, baseOptions);
-export type SeedDataCategoryMutationHookResult = ReturnType<
-  typeof useSeedDataCategoryMutation
->;
-export type SeedDataCategoryMutationResult = Apollo.MutationResult<
-  SeedDataCategoryMutation
->;
-export type SeedDataCategoryMutationOptions = Apollo.BaseMutationOptions<
-  SeedDataCategoryMutation,
-  SeedDataCategoryMutationVariables
->;
-export const SeedDataTodoDocument = gql`
-  mutation SeedDataTodo($category_id_work: uuid, $category_id_private: uuid) {
-    insert_todos(
-      objects: [
-        {
-          title: "例) 第一四半期決算の締め処理"
-          urgency: week
-          workload: 5
-          isToday: true
-          isCompleted: false
-          category_id: $category_id_work
-        }
-        {
-          title: "例) ケーキを買って帰る"
-          urgency: week
-          workload: 1
-          isToday: true
-          isCompleted: false
-          category_id: $category_id_private
-        }
-      ]
-    ) {
-      returning {
-        id
+export function useSeedDataCategoryMutation(baseOptions?: Apollo.MutationHookOptions<SeedDataCategoryMutation, SeedDataCategoryMutationVariables>) {
+        return Apollo.useMutation<SeedDataCategoryMutation, SeedDataCategoryMutationVariables>(SeedDataCategoryDocument, baseOptions);
       }
+export type SeedDataCategoryMutationHookResult = ReturnType<typeof useSeedDataCategoryMutation>;
+export type SeedDataCategoryMutationResult = Apollo.MutationResult<SeedDataCategoryMutation>;
+export type SeedDataCategoryMutationOptions = Apollo.BaseMutationOptions<SeedDataCategoryMutation, SeedDataCategoryMutationVariables>;
+export const SeedDataTodoDocument = gql`
+    mutation SeedDataTodo($category_id_work: uuid, $category_id_private: uuid) {
+  insert_todos(objects: [{title: "例) 第一四半期決算の締め処理", urgency: week, workload: 5, isToday: true, isCompleted: false, category_id: $category_id_work}, {title: "例) ケーキを買って帰る", urgency: week, workload: 1, isToday: true, isCompleted: false, category_id: $category_id_private}]) {
+    returning {
+      id
     }
   }
-`;
-export type SeedDataTodoMutationFn = Apollo.MutationFunction<
-  SeedDataTodoMutation,
-  SeedDataTodoMutationVariables
->;
+}
+    `;
+export type SeedDataTodoMutationFn = Apollo.MutationFunction<SeedDataTodoMutation, SeedDataTodoMutationVariables>;
 
 /**
  * __useSeedDataTodoMutation__
@@ -2012,45 +2065,21 @@ export type SeedDataTodoMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export const useSeedDataTodoMutation = (baseOptions?: Apollo.MutationHookOptions<SeedDataTodoMutation, SeedDataTodoMutationVariables>) => Apollo.useMutation<SeedDataTodoMutation, SeedDataTodoMutationVariables>(SeedDataTodoDocument, baseOptions);
-export type SeedDataTodoMutationHookResult = ReturnType<
-  typeof useSeedDataTodoMutation
->;
-export type SeedDataTodoMutationResult = Apollo.MutationResult<
-  SeedDataTodoMutation
->;
-export type SeedDataTodoMutationOptions = Apollo.BaseMutationOptions<
-  SeedDataTodoMutation,
-  SeedDataTodoMutationVariables
->;
-export const InsertToDoDocument = gql`
-  mutation InsertToDo(
-    $title: String = ""
-    $urgency: urgency_enum = month
-    $workload: Int = 1
-    $isToday: Boolean = true
-    $isCompleted: Boolean = false
-    $category_id: uuid
-  ) {
-    insert_todos_one(
-      object: {
-        isCompleted: $isCompleted
-        isToday: $isToday
-        title: $title
-        urgency: $urgency
-        workload: $workload
-        category_id: $category_id
+export function useSeedDataTodoMutation(baseOptions?: Apollo.MutationHookOptions<SeedDataTodoMutation, SeedDataTodoMutationVariables>) {
+        return Apollo.useMutation<SeedDataTodoMutation, SeedDataTodoMutationVariables>(SeedDataTodoDocument, baseOptions);
       }
-    ) {
-      __typename
-      id
-    }
+export type SeedDataTodoMutationHookResult = ReturnType<typeof useSeedDataTodoMutation>;
+export type SeedDataTodoMutationResult = Apollo.MutationResult<SeedDataTodoMutation>;
+export type SeedDataTodoMutationOptions = Apollo.BaseMutationOptions<SeedDataTodoMutation, SeedDataTodoMutationVariables>;
+export const InsertToDoDocument = gql`
+    mutation InsertToDo($title: String = "", $urgency: urgency_enum = month, $workload: Int = 1, $isToday: Boolean = true, $isCompleted: Boolean = false, $category_id: uuid) {
+  insert_todos_one(object: {isCompleted: $isCompleted, isToday: $isToday, title: $title, urgency: $urgency, workload: $workload, category_id: $category_id}) {
+    __typename
+    id
   }
-`;
-export type InsertToDoMutationFn = Apollo.MutationFunction<
-  InsertToDoMutation,
-  InsertToDoMutationVariables
->;
+}
+    `;
+export type InsertToDoMutationFn = Apollo.MutationFunction<InsertToDoMutation, InsertToDoMutationVariables>;
 
 /**
  * __useInsertToDoMutation__
@@ -2074,42 +2103,20 @@ export type InsertToDoMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export const useInsertToDoMutation = (baseOptions?: Apollo.MutationHookOptions<InsertToDoMutation, InsertToDoMutationVariables>) => Apollo.useMutation<InsertToDoMutation, InsertToDoMutationVariables>(InsertToDoDocument, baseOptions);
-export type InsertToDoMutationHookResult = ReturnType<
-  typeof useInsertToDoMutation
->;
-export type InsertToDoMutationResult = Apollo.MutationResult<
-  InsertToDoMutation
->;
-export type InsertToDoMutationOptions = Apollo.BaseMutationOptions<
-  InsertToDoMutation,
-  InsertToDoMutationVariables
->;
-export const UpdateTodoDocument = gql`
-  mutation UpdateTodo(
-    $id: String!
-    $title: String
-    $urgency: urgency_enum
-    $workload: Int
-    $category_id: uuid
-  ) {
-    update_todos_by_pk(
-      pk_columns: { id: $id }
-      _set: {
-        urgency: $urgency
-        workload: $workload
-        title: $title
-        category_id: $category_id
+export function useInsertToDoMutation(baseOptions?: Apollo.MutationHookOptions<InsertToDoMutation, InsertToDoMutationVariables>) {
+        return Apollo.useMutation<InsertToDoMutation, InsertToDoMutationVariables>(InsertToDoDocument, baseOptions);
       }
-    ) {
-      id
-    }
+export type InsertToDoMutationHookResult = ReturnType<typeof useInsertToDoMutation>;
+export type InsertToDoMutationResult = Apollo.MutationResult<InsertToDoMutation>;
+export type InsertToDoMutationOptions = Apollo.BaseMutationOptions<InsertToDoMutation, InsertToDoMutationVariables>;
+export const UpdateTodoDocument = gql`
+    mutation UpdateTodo($id: String!, $title: String, $urgency: urgency_enum, $workload: Int, $category_id: uuid) {
+  update_todos_by_pk(pk_columns: {id: $id}, _set: {urgency: $urgency, workload: $workload, title: $title, category_id: $category_id}) {
+    id
   }
-`;
-export type UpdateTodoMutationFn = Apollo.MutationFunction<
-  UpdateTodoMutation,
-  UpdateTodoMutationVariables
->;
+}
+    `;
+export type UpdateTodoMutationFn = Apollo.MutationFunction<UpdateTodoMutation, UpdateTodoMutationVariables>;
 
 /**
  * __useUpdateTodoMutation__
@@ -2132,34 +2139,23 @@ export type UpdateTodoMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export const useUpdateTodoMutation = (baseOptions?: Apollo.MutationHookOptions<UpdateTodoMutation, UpdateTodoMutationVariables>) => Apollo.useMutation<UpdateTodoMutation, UpdateTodoMutationVariables>(UpdateTodoDocument, baseOptions);
-export type UpdateTodoMutationHookResult = ReturnType<
-  typeof useUpdateTodoMutation
->;
-export type UpdateTodoMutationResult = Apollo.MutationResult<
-  UpdateTodoMutation
->;
-export type UpdateTodoMutationOptions = Apollo.BaseMutationOptions<
-  UpdateTodoMutation,
-  UpdateTodoMutationVariables
->;
-export const CompleteToDoDocument = gql`
-  mutation CompleteToDo($_eq: String!) {
-    update_todos(
-      where: { id: { _eq: $_eq } }
-      _set: { isCompleted: true, completed_at: "now()" }
-    ) {
-      affected_rows
-      returning {
-        id
+export function useUpdateTodoMutation(baseOptions?: Apollo.MutationHookOptions<UpdateTodoMutation, UpdateTodoMutationVariables>) {
+        return Apollo.useMutation<UpdateTodoMutation, UpdateTodoMutationVariables>(UpdateTodoDocument, baseOptions);
       }
+export type UpdateTodoMutationHookResult = ReturnType<typeof useUpdateTodoMutation>;
+export type UpdateTodoMutationResult = Apollo.MutationResult<UpdateTodoMutation>;
+export type UpdateTodoMutationOptions = Apollo.BaseMutationOptions<UpdateTodoMutation, UpdateTodoMutationVariables>;
+export const CompleteToDoDocument = gql`
+    mutation CompleteToDo($_eq: String!) {
+  update_todos(where: {id: {_eq: $_eq}}, _set: {isCompleted: true, completed_at: "now()"}) {
+    affected_rows
+    returning {
+      id
     }
   }
-`;
-export type CompleteToDoMutationFn = Apollo.MutationFunction<
-  CompleteToDoMutation,
-  CompleteToDoMutationVariables
->;
+}
+    `;
+export type CompleteToDoMutationFn = Apollo.MutationFunction<CompleteToDoMutation, CompleteToDoMutationVariables>;
 
 /**
  * __useCompleteToDoMutation__
@@ -2178,31 +2174,23 @@ export type CompleteToDoMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export const useCompleteToDoMutation = (baseOptions?: Apollo.MutationHookOptions<CompleteToDoMutation, CompleteToDoMutationVariables>) => Apollo.useMutation<CompleteToDoMutation, CompleteToDoMutationVariables>(CompleteToDoDocument, baseOptions);
-export type CompleteToDoMutationHookResult = ReturnType<
-  typeof useCompleteToDoMutation
->;
-export type CompleteToDoMutationResult = Apollo.MutationResult<
-  CompleteToDoMutation
->;
-export type CompleteToDoMutationOptions = Apollo.BaseMutationOptions<
-  CompleteToDoMutation,
-  CompleteToDoMutationVariables
->;
-export const DeleteToDoDocument = gql`
-  mutation DeleteToDo($_eq: String!) {
-    update_todos(where: { id: { _eq: $_eq } }, _set: { deleted_at: "now()" }) {
-      affected_rows
-      returning {
-        id
+export function useCompleteToDoMutation(baseOptions?: Apollo.MutationHookOptions<CompleteToDoMutation, CompleteToDoMutationVariables>) {
+        return Apollo.useMutation<CompleteToDoMutation, CompleteToDoMutationVariables>(CompleteToDoDocument, baseOptions);
       }
+export type CompleteToDoMutationHookResult = ReturnType<typeof useCompleteToDoMutation>;
+export type CompleteToDoMutationResult = Apollo.MutationResult<CompleteToDoMutation>;
+export type CompleteToDoMutationOptions = Apollo.BaseMutationOptions<CompleteToDoMutation, CompleteToDoMutationVariables>;
+export const DeleteToDoDocument = gql`
+    mutation DeleteToDo($_eq: String!) {
+  update_todos(where: {id: {_eq: $_eq}}, _set: {deleted_at: "now()"}) {
+    affected_rows
+    returning {
+      id
     }
   }
-`;
-export type DeleteToDoMutationFn = Apollo.MutationFunction<
-  DeleteToDoMutation,
-  DeleteToDoMutationVariables
->;
+}
+    `;
+export type DeleteToDoMutationFn = Apollo.MutationFunction<DeleteToDoMutation, DeleteToDoMutationVariables>;
 
 /**
  * __useDeleteToDoMutation__
@@ -2221,31 +2209,23 @@ export type DeleteToDoMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export const useDeleteToDoMutation = (baseOptions?: Apollo.MutationHookOptions<DeleteToDoMutation, DeleteToDoMutationVariables>) => Apollo.useMutation<DeleteToDoMutation, DeleteToDoMutationVariables>(DeleteToDoDocument, baseOptions);
-export type DeleteToDoMutationHookResult = ReturnType<
-  typeof useDeleteToDoMutation
->;
-export type DeleteToDoMutationResult = Apollo.MutationResult<
-  DeleteToDoMutation
->;
-export type DeleteToDoMutationOptions = Apollo.BaseMutationOptions<
-  DeleteToDoMutation,
-  DeleteToDoMutationVariables
->;
-export const SetTodayTodoDocument = gql`
-  mutation SetTodayTodo($_eq: String!) {
-    update_todos(where: { id: { _eq: $_eq } }, _set: { isToday: true }) {
-      affected_rows
-      returning {
-        id
+export function useDeleteToDoMutation(baseOptions?: Apollo.MutationHookOptions<DeleteToDoMutation, DeleteToDoMutationVariables>) {
+        return Apollo.useMutation<DeleteToDoMutation, DeleteToDoMutationVariables>(DeleteToDoDocument, baseOptions);
       }
+export type DeleteToDoMutationHookResult = ReturnType<typeof useDeleteToDoMutation>;
+export type DeleteToDoMutationResult = Apollo.MutationResult<DeleteToDoMutation>;
+export type DeleteToDoMutationOptions = Apollo.BaseMutationOptions<DeleteToDoMutation, DeleteToDoMutationVariables>;
+export const SetTodayTodoDocument = gql`
+    mutation SetTodayTodo($_eq: String!) {
+  update_todos(where: {id: {_eq: $_eq}}, _set: {isToday: true}) {
+    affected_rows
+    returning {
+      id
     }
   }
-`;
-export type SetTodayTodoMutationFn = Apollo.MutationFunction<
-  SetTodayTodoMutation,
-  SetTodayTodoMutationVariables
->;
+}
+    `;
+export type SetTodayTodoMutationFn = Apollo.MutationFunction<SetTodayTodoMutation, SetTodayTodoMutationVariables>;
 
 /**
  * __useSetTodayTodoMutation__
@@ -2264,31 +2244,23 @@ export type SetTodayTodoMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export const useSetTodayTodoMutation = (baseOptions?: Apollo.MutationHookOptions<SetTodayTodoMutation, SetTodayTodoMutationVariables>) => Apollo.useMutation<SetTodayTodoMutation, SetTodayTodoMutationVariables>(SetTodayTodoDocument, baseOptions);
-export type SetTodayTodoMutationHookResult = ReturnType<
-  typeof useSetTodayTodoMutation
->;
-export type SetTodayTodoMutationResult = Apollo.MutationResult<
-  SetTodayTodoMutation
->;
-export type SetTodayTodoMutationOptions = Apollo.BaseMutationOptions<
-  SetTodayTodoMutation,
-  SetTodayTodoMutationVariables
->;
-export const SetNotTodayTodoDocument = gql`
-  mutation SetNotTodayTodo($_eq: String!) {
-    update_todos(where: { id: { _eq: $_eq } }, _set: { isToday: false }) {
-      affected_rows
-      returning {
-        id
+export function useSetTodayTodoMutation(baseOptions?: Apollo.MutationHookOptions<SetTodayTodoMutation, SetTodayTodoMutationVariables>) {
+        return Apollo.useMutation<SetTodayTodoMutation, SetTodayTodoMutationVariables>(SetTodayTodoDocument, baseOptions);
       }
+export type SetTodayTodoMutationHookResult = ReturnType<typeof useSetTodayTodoMutation>;
+export type SetTodayTodoMutationResult = Apollo.MutationResult<SetTodayTodoMutation>;
+export type SetTodayTodoMutationOptions = Apollo.BaseMutationOptions<SetTodayTodoMutation, SetTodayTodoMutationVariables>;
+export const SetNotTodayTodoDocument = gql`
+    mutation SetNotTodayTodo($_eq: String!) {
+  update_todos(where: {id: {_eq: $_eq}}, _set: {isToday: false}) {
+    affected_rows
+    returning {
+      id
     }
   }
-`;
-export type SetNotTodayTodoMutationFn = Apollo.MutationFunction<
-  SetNotTodayTodoMutation,
-  SetNotTodayTodoMutationVariables
->;
+}
+    `;
+export type SetNotTodayTodoMutationFn = Apollo.MutationFunction<SetNotTodayTodoMutation, SetNotTodayTodoMutationVariables>;
 
 /**
  * __useSetNotTodayTodoMutation__
@@ -2307,39 +2279,23 @@ export type SetNotTodayTodoMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export const useSetNotTodayTodoMutation = (baseOptions?: Apollo.MutationHookOptions<SetNotTodayTodoMutation, SetNotTodayTodoMutationVariables>) => Apollo.useMutation<SetNotTodayTodoMutation, SetNotTodayTodoMutationVariables>(SetNotTodayTodoDocument, baseOptions);
-export type SetNotTodayTodoMutationHookResult = ReturnType<
-  typeof useSetNotTodayTodoMutation
->;
-export type SetNotTodayTodoMutationResult = Apollo.MutationResult<
-  SetNotTodayTodoMutation
->;
-export type SetNotTodayTodoMutationOptions = Apollo.BaseMutationOptions<
-  SetNotTodayTodoMutation,
-  SetNotTodayTodoMutationVariables
->;
+export function useSetNotTodayTodoMutation(baseOptions?: Apollo.MutationHookOptions<SetNotTodayTodoMutation, SetNotTodayTodoMutationVariables>) {
+        return Apollo.useMutation<SetNotTodayTodoMutation, SetNotTodayTodoMutationVariables>(SetNotTodayTodoDocument, baseOptions);
+      }
+export type SetNotTodayTodoMutationHookResult = ReturnType<typeof useSetNotTodayTodoMutation>;
+export type SetNotTodayTodoMutationResult = Apollo.MutationResult<SetNotTodayTodoMutation>;
+export type SetNotTodayTodoMutationOptions = Apollo.BaseMutationOptions<SetNotTodayTodoMutation, SetNotTodayTodoMutationVariables>;
 export const RestoreNotTodayDocument = gql`
-  mutation RestoreNotToday($_eq: String!) {
-    update_todos(
-      where: { id: { _eq: $_eq } }
-      _set: {
-        isCompleted: false
-        completed_at: null
-        isToday: false
-        deleted_at: null
-      }
-    ) {
-      affected_rows
-      returning {
-        id
-      }
+    mutation RestoreNotToday($_eq: String!) {
+  update_todos(where: {id: {_eq: $_eq}}, _set: {isCompleted: false, completed_at: null, isToday: false, deleted_at: null}) {
+    affected_rows
+    returning {
+      id
     }
   }
-`;
-export type RestoreNotTodayMutationFn = Apollo.MutationFunction<
-  RestoreNotTodayMutation,
-  RestoreNotTodayMutationVariables
->;
+}
+    `;
+export type RestoreNotTodayMutationFn = Apollo.MutationFunction<RestoreNotTodayMutation, RestoreNotTodayMutationVariables>;
 
 /**
  * __useRestoreNotTodayMutation__
@@ -2358,39 +2314,23 @@ export type RestoreNotTodayMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export const useRestoreNotTodayMutation = (baseOptions?: Apollo.MutationHookOptions<RestoreNotTodayMutation, RestoreNotTodayMutationVariables>) => Apollo.useMutation<RestoreNotTodayMutation, RestoreNotTodayMutationVariables>(RestoreNotTodayDocument, baseOptions);
-export type RestoreNotTodayMutationHookResult = ReturnType<
-  typeof useRestoreNotTodayMutation
->;
-export type RestoreNotTodayMutationResult = Apollo.MutationResult<
-  RestoreNotTodayMutation
->;
-export type RestoreNotTodayMutationOptions = Apollo.BaseMutationOptions<
-  RestoreNotTodayMutation,
-  RestoreNotTodayMutationVariables
->;
+export function useRestoreNotTodayMutation(baseOptions?: Apollo.MutationHookOptions<RestoreNotTodayMutation, RestoreNotTodayMutationVariables>) {
+        return Apollo.useMutation<RestoreNotTodayMutation, RestoreNotTodayMutationVariables>(RestoreNotTodayDocument, baseOptions);
+      }
+export type RestoreNotTodayMutationHookResult = ReturnType<typeof useRestoreNotTodayMutation>;
+export type RestoreNotTodayMutationResult = Apollo.MutationResult<RestoreNotTodayMutation>;
+export type RestoreNotTodayMutationOptions = Apollo.BaseMutationOptions<RestoreNotTodayMutation, RestoreNotTodayMutationVariables>;
 export const RestoreTodayDocument = gql`
-  mutation RestoreToday($_eq: String!) {
-    update_todos(
-      where: { id: { _eq: $_eq } }
-      _set: {
-        isCompleted: false
-        completed_at: null
-        isToday: true
-        deleted_at: null
-      }
-    ) {
-      affected_rows
-      returning {
-        id
-      }
+    mutation RestoreToday($_eq: String!) {
+  update_todos(where: {id: {_eq: $_eq}}, _set: {isCompleted: false, completed_at: null, isToday: true, deleted_at: null}) {
+    affected_rows
+    returning {
+      id
     }
   }
-`;
-export type RestoreTodayMutationFn = Apollo.MutationFunction<
-  RestoreTodayMutation,
-  RestoreTodayMutationVariables
->;
+}
+    `;
+export type RestoreTodayMutationFn = Apollo.MutationFunction<RestoreTodayMutation, RestoreTodayMutationVariables>;
 
 /**
  * __useRestoreTodayMutation__
@@ -2409,35 +2349,24 @@ export type RestoreTodayMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export const useRestoreTodayMutation = (baseOptions?: Apollo.MutationHookOptions<RestoreTodayMutation, RestoreTodayMutationVariables>) => Apollo.useMutation<RestoreTodayMutation, RestoreTodayMutationVariables>(RestoreTodayDocument, baseOptions);
-export type RestoreTodayMutationHookResult = ReturnType<
-  typeof useRestoreTodayMutation
->;
-export type RestoreTodayMutationResult = Apollo.MutationResult<
-  RestoreTodayMutation
->;
-export type RestoreTodayMutationOptions = Apollo.BaseMutationOptions<
-  RestoreTodayMutation,
-  RestoreTodayMutationVariables
->;
-export const UpdateColorTypeDocument = gql`
-  mutation UpdateColorType($color_type: colorTypes_enum, $_eq: String) {
-    update_users(
-      _set: { color_type: $color_type }
-      where: { id: { _eq: $_eq } }
-    ) {
-      affected_rows
-      returning {
-        id
-        color_type
+export function useRestoreTodayMutation(baseOptions?: Apollo.MutationHookOptions<RestoreTodayMutation, RestoreTodayMutationVariables>) {
+        return Apollo.useMutation<RestoreTodayMutation, RestoreTodayMutationVariables>(RestoreTodayDocument, baseOptions);
       }
+export type RestoreTodayMutationHookResult = ReturnType<typeof useRestoreTodayMutation>;
+export type RestoreTodayMutationResult = Apollo.MutationResult<RestoreTodayMutation>;
+export type RestoreTodayMutationOptions = Apollo.BaseMutationOptions<RestoreTodayMutation, RestoreTodayMutationVariables>;
+export const UpdateColorTypeDocument = gql`
+    mutation UpdateColorType($color_type: colorTypes_enum, $_eq: String) {
+  update_users(_set: {color_type: $color_type}, where: {id: {_eq: $_eq}}) {
+    affected_rows
+    returning {
+      id
+      color_type
     }
   }
-`;
-export type UpdateColorTypeMutationFn = Apollo.MutationFunction<
-  UpdateColorTypeMutation,
-  UpdateColorTypeMutationVariables
->;
+}
+    `;
+export type UpdateColorTypeMutationFn = Apollo.MutationFunction<UpdateColorTypeMutation, UpdateColorTypeMutationVariables>;
 
 /**
  * __useUpdateColorTypeMutation__
@@ -2457,32 +2386,24 @@ export type UpdateColorTypeMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export const useUpdateColorTypeMutation = (baseOptions?: Apollo.MutationHookOptions<UpdateColorTypeMutation, UpdateColorTypeMutationVariables>) => Apollo.useMutation<UpdateColorTypeMutation, UpdateColorTypeMutationVariables>(UpdateColorTypeDocument, baseOptions);
-export type UpdateColorTypeMutationHookResult = ReturnType<
-  typeof useUpdateColorTypeMutation
->;
-export type UpdateColorTypeMutationResult = Apollo.MutationResult<
-  UpdateColorTypeMutation
->;
-export type UpdateColorTypeMutationOptions = Apollo.BaseMutationOptions<
-  UpdateColorTypeMutation,
-  UpdateColorTypeMutationVariables
->;
-export const UpdateUserMessageDocument = gql`
-  mutation UpdateUserMessage($message: String, $_eq: String) {
-    update_users(_set: { message: $message }, where: { id: { _eq: $_eq } }) {
-      affected_rows
-      returning {
-        id
-        message
+export function useUpdateColorTypeMutation(baseOptions?: Apollo.MutationHookOptions<UpdateColorTypeMutation, UpdateColorTypeMutationVariables>) {
+        return Apollo.useMutation<UpdateColorTypeMutation, UpdateColorTypeMutationVariables>(UpdateColorTypeDocument, baseOptions);
       }
+export type UpdateColorTypeMutationHookResult = ReturnType<typeof useUpdateColorTypeMutation>;
+export type UpdateColorTypeMutationResult = Apollo.MutationResult<UpdateColorTypeMutation>;
+export type UpdateColorTypeMutationOptions = Apollo.BaseMutationOptions<UpdateColorTypeMutation, UpdateColorTypeMutationVariables>;
+export const UpdateUserMessageDocument = gql`
+    mutation UpdateUserMessage($message: String, $_eq: String) {
+  update_users(_set: {message: $message}, where: {id: {_eq: $_eq}}) {
+    affected_rows
+    returning {
+      id
+      message
     }
   }
-`;
-export type UpdateUserMessageMutationFn = Apollo.MutationFunction<
-  UpdateUserMessageMutation,
-  UpdateUserMessageMutationVariables
->;
+}
+    `;
+export type UpdateUserMessageMutationFn = Apollo.MutationFunction<UpdateUserMessageMutation, UpdateUserMessageMutationVariables>;
 
 /**
  * __useUpdateUserMessageMutation__
@@ -2502,26 +2423,21 @@ export type UpdateUserMessageMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export const useUpdateUserMessageMutation = (baseOptions?: Apollo.MutationHookOptions<UpdateUserMessageMutation, UpdateUserMessageMutationVariables>) => Apollo.useMutation<UpdateUserMessageMutation, UpdateUserMessageMutationVariables>(UpdateUserMessageDocument, baseOptions);
-export type UpdateUserMessageMutationHookResult = ReturnType<
-  typeof useUpdateUserMessageMutation
->;
-export type UpdateUserMessageMutationResult = Apollo.MutationResult<
-  UpdateUserMessageMutation
->;
-export type UpdateUserMessageMutationOptions = Apollo.BaseMutationOptions<
-  UpdateUserMessageMutation,
-  UpdateUserMessageMutationVariables
->;
+export function useUpdateUserMessageMutation(baseOptions?: Apollo.MutationHookOptions<UpdateUserMessageMutation, UpdateUserMessageMutationVariables>) {
+        return Apollo.useMutation<UpdateUserMessageMutation, UpdateUserMessageMutationVariables>(UpdateUserMessageDocument, baseOptions);
+      }
+export type UpdateUserMessageMutationHookResult = ReturnType<typeof useUpdateUserMessageMutation>;
+export type UpdateUserMessageMutationResult = Apollo.MutationResult<UpdateUserMessageMutation>;
+export type UpdateUserMessageMutationOptions = Apollo.BaseMutationOptions<UpdateUserMessageMutation, UpdateUserMessageMutationVariables>;
 export const AllCategoryDocument = gql`
-  query AllCategory {
-    categories {
-      __typename
-      category
-      id
-    }
+    query AllCategory {
+  categories {
+    __typename
+    category
+    id
   }
-`;
+}
+    `;
 
 /**
  * __useAllCategoryQuery__
@@ -2538,48 +2454,70 @@ export const AllCategoryDocument = gql`
  *   },
  * });
  */
-export const useAllCategoryQuery = (baseOptions?: Apollo.QueryHookOptions<AllCategoryQuery, AllCategoryQueryVariables>) => Apollo.useQuery<AllCategoryQuery, AllCategoryQueryVariables>(AllCategoryDocument, baseOptions);
-export const useAllCategoryLazyQuery = (baseOptions?: Apollo.LazyQueryHookOptions<AllCategoryQuery, AllCategoryQueryVariables>) => Apollo.useLazyQuery<AllCategoryQuery, AllCategoryQueryVariables>(AllCategoryDocument, baseOptions);
-export type AllCategoryQueryHookResult = ReturnType<typeof useAllCategoryQuery>;
-export type AllCategoryLazyQueryHookResult = ReturnType<
-  typeof useAllCategoryLazyQuery
->;
-export type AllCategoryQueryResult = Apollo.QueryResult<
-  AllCategoryQuery,
-  AllCategoryQueryVariables
->;
-export const TodayTodosDocument = gql`
-  query todayTodos(
-    $created_at: order_by = null
-    $urgency: order_by = null
-    $workload: order_by = null
-    $_in: [uuid!]
-  ) {
-    todos(
-      where: {
-        _and: {
-          isToday: { _eq: true }
-          isCompleted: { _eq: false }
-          deleted_at: { _is_null: true }
-          category_id: { _in: $_in }
+export function useAllCategoryQuery(baseOptions?: Apollo.QueryHookOptions<AllCategoryQuery, AllCategoryQueryVariables>) {
+        return Apollo.useQuery<AllCategoryQuery, AllCategoryQueryVariables>(AllCategoryDocument, baseOptions);
+      }
+export function useAllCategoryLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<AllCategoryQuery, AllCategoryQueryVariables>) {
+          return Apollo.useLazyQuery<AllCategoryQuery, AllCategoryQueryVariables>(AllCategoryDocument, baseOptions);
         }
-      }
-      order_by: {
-        created_at: $created_at
-        urgency: $urgency
-        workload: $workload
-      }
-    ) {
-      id
-      title
-      urgency
-      workload
-      isCompleted
-      isToday
-      category_id
-    }
+export type AllCategoryQueryHookResult = ReturnType<typeof useAllCategoryQuery>;
+export type AllCategoryLazyQueryHookResult = ReturnType<typeof useAllCategoryLazyQuery>;
+export type AllCategoryQueryResult = Apollo.QueryResult<AllCategoryQuery, AllCategoryQueryVariables>;
+export const GetAllTodosDocument = gql`
+    query GetAllTodos($created_at: order_by = null, $urgency: order_by = null, $workload: order_by = null, $_in: [uuid!]) {
+  todos(where: {_and: {deleted_at: {_is_null: true}, category_id: {_in: $_in}}}, order_by: {created_at: $created_at, urgency: $urgency, workload: $workload}) {
+    id
+    title
+    urgency
+    workload
+    isCompleted
+    isToday
+    category_id
   }
-`;
+}
+    `;
+
+/**
+ * __useGetAllTodosQuery__
+ *
+ * To run a query within a React component, call `useGetAllTodosQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAllTodosQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetAllTodosQuery({
+ *   variables: {
+ *      created_at: // value for 'created_at'
+ *      urgency: // value for 'urgency'
+ *      workload: // value for 'workload'
+ *      _in: // value for '_in'
+ *   },
+ * });
+ */
+export function useGetAllTodosQuery(baseOptions?: Apollo.QueryHookOptions<GetAllTodosQuery, GetAllTodosQueryVariables>) {
+        return Apollo.useQuery<GetAllTodosQuery, GetAllTodosQueryVariables>(GetAllTodosDocument, baseOptions);
+      }
+export function useGetAllTodosLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAllTodosQuery, GetAllTodosQueryVariables>) {
+          return Apollo.useLazyQuery<GetAllTodosQuery, GetAllTodosQueryVariables>(GetAllTodosDocument, baseOptions);
+        }
+export type GetAllTodosQueryHookResult = ReturnType<typeof useGetAllTodosQuery>;
+export type GetAllTodosLazyQueryHookResult = ReturnType<typeof useGetAllTodosLazyQuery>;
+export type GetAllTodosQueryResult = Apollo.QueryResult<GetAllTodosQuery, GetAllTodosQueryVariables>;
+export const TodayTodosDocument = gql`
+    query todayTodos($created_at: order_by = null, $urgency: order_by = null, $workload: order_by = null, $_in: [uuid!]) {
+  todos(where: {_and: {isToday: {_eq: true}, isCompleted: {_eq: false}, deleted_at: {_is_null: true}, category_id: {_in: $_in}}}, order_by: {created_at: $created_at, urgency: $urgency, workload: $workload}) {
+    id
+    title
+    urgency
+    workload
+    isCompleted
+    isToday
+    category_id
+  }
+}
+    `;
 
 /**
  * __useTodayTodosQuery__
@@ -2600,46 +2538,28 @@ export const TodayTodosDocument = gql`
  *   },
  * });
  */
-export const useTodayTodosQuery = (baseOptions?: Apollo.QueryHookOptions<TodayTodosQuery, TodayTodosQueryVariables>) => Apollo.useQuery<TodayTodosQuery, TodayTodosQueryVariables>(TodayTodosDocument, baseOptions);
-export const useTodayTodosLazyQuery = (baseOptions?: Apollo.LazyQueryHookOptions<TodayTodosQuery, TodayTodosQueryVariables>) => Apollo.useLazyQuery<TodayTodosQuery, TodayTodosQueryVariables>(TodayTodosDocument, baseOptions);
+export function useTodayTodosQuery(baseOptions?: Apollo.QueryHookOptions<TodayTodosQuery, TodayTodosQueryVariables>) {
+        return Apollo.useQuery<TodayTodosQuery, TodayTodosQueryVariables>(TodayTodosDocument, baseOptions);
+      }
+export function useTodayTodosLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TodayTodosQuery, TodayTodosQueryVariables>) {
+          return Apollo.useLazyQuery<TodayTodosQuery, TodayTodosQueryVariables>(TodayTodosDocument, baseOptions);
+        }
 export type TodayTodosQueryHookResult = ReturnType<typeof useTodayTodosQuery>;
-export type TodayTodosLazyQueryHookResult = ReturnType<
-  typeof useTodayTodosLazyQuery
->;
-export type TodayTodosQueryResult = Apollo.QueryResult<
-  TodayTodosQuery,
-  TodayTodosQueryVariables
->;
+export type TodayTodosLazyQueryHookResult = ReturnType<typeof useTodayTodosLazyQuery>;
+export type TodayTodosQueryResult = Apollo.QueryResult<TodayTodosQuery, TodayTodosQueryVariables>;
 export const NotTodayTodosDocument = gql`
-  query notTodayTodos(
-    $created_at: order_by = null
-    $urgency: order_by = null
-    $workload: order_by = null
-    $_in: [uuid!]
-  ) {
-    todos(
-      where: {
-        isToday: { _eq: false }
-        isCompleted: { _eq: false }
-        deleted_at: { _is_null: true }
-        category_id: { _in: $_in }
-      }
-      order_by: {
-        created_at: $created_at
-        urgency: $urgency
-        workload: $workload
-      }
-    ) {
-      id
-      title
-      urgency
-      workload
-      isToday
-      isCompleted
-      category_id
-    }
+    query notTodayTodos($created_at: order_by = null, $urgency: order_by = null, $workload: order_by = null, $_in: [uuid!]) {
+  todos(where: {isToday: {_eq: false}, isCompleted: {_eq: false}, deleted_at: {_is_null: true}, category_id: {_in: $_in}}, order_by: {created_at: $created_at, urgency: $urgency, workload: $workload}) {
+    id
+    title
+    urgency
+    workload
+    isToday
+    isCompleted
+    category_id
   }
-`;
+}
+    `;
 
 /**
  * __useNotTodayTodosQuery__
@@ -2660,47 +2580,28 @@ export const NotTodayTodosDocument = gql`
  *   },
  * });
  */
-export const useNotTodayTodosQuery = (baseOptions?: Apollo.QueryHookOptions<NotTodayTodosQuery, NotTodayTodosQueryVariables>) => Apollo.useQuery<NotTodayTodosQuery, NotTodayTodosQueryVariables>(NotTodayTodosDocument, baseOptions);
-export const useNotTodayTodosLazyQuery = (baseOptions?: Apollo.LazyQueryHookOptions<NotTodayTodosQuery, NotTodayTodosQueryVariables>) => Apollo.useLazyQuery<NotTodayTodosQuery, NotTodayTodosQueryVariables>(NotTodayTodosDocument, baseOptions);
-export type NotTodayTodosQueryHookResult = ReturnType<
-  typeof useNotTodayTodosQuery
->;
-export type NotTodayTodosLazyQueryHookResult = ReturnType<
-  typeof useNotTodayTodosLazyQuery
->;
-export type NotTodayTodosQueryResult = Apollo.QueryResult<
-  NotTodayTodosQuery,
-  NotTodayTodosQueryVariables
->;
+export function useNotTodayTodosQuery(baseOptions?: Apollo.QueryHookOptions<NotTodayTodosQuery, NotTodayTodosQueryVariables>) {
+        return Apollo.useQuery<NotTodayTodosQuery, NotTodayTodosQueryVariables>(NotTodayTodosDocument, baseOptions);
+      }
+export function useNotTodayTodosLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<NotTodayTodosQuery, NotTodayTodosQueryVariables>) {
+          return Apollo.useLazyQuery<NotTodayTodosQuery, NotTodayTodosQueryVariables>(NotTodayTodosDocument, baseOptions);
+        }
+export type NotTodayTodosQueryHookResult = ReturnType<typeof useNotTodayTodosQuery>;
+export type NotTodayTodosLazyQueryHookResult = ReturnType<typeof useNotTodayTodosLazyQuery>;
+export type NotTodayTodosQueryResult = Apollo.QueryResult<NotTodayTodosQuery, NotTodayTodosQueryVariables>;
 export const CompletedTodosDocument = gql`
-  query completedTodos(
-    $created_at: order_by = null
-    $urgency: order_by = null
-    $workload: order_by = null
-    $_in: [uuid!]
-  ) {
-    todos(
-      where: {
-        isCompleted: { _eq: true }
-        deleted_at: { _is_null: true }
-        category_id: { _in: $_in }
-      }
-      order_by: {
-        created_at: $created_at
-        urgency: $urgency
-        workload: $workload
-      }
-    ) {
-      id
-      title
-      urgency
-      workload
-      isToday
-      isCompleted
-      category_id
-    }
+    query completedTodos($created_at: order_by = null, $urgency: order_by = null, $workload: order_by = null, $_in: [uuid!]) {
+  todos(where: {isCompleted: {_eq: true}, deleted_at: {_is_null: true}, category_id: {_in: $_in}}, order_by: {created_at: $created_at, urgency: $urgency, workload: $workload}) {
+    id
+    title
+    urgency
+    workload
+    isToday
+    isCompleted
+    category_id
   }
-`;
+}
+    `;
 
 /**
  * __useCompletedTodosQuery__
@@ -2721,44 +2622,37 @@ export const CompletedTodosDocument = gql`
  *   },
  * });
  */
-export const useCompletedTodosQuery = (baseOptions?: Apollo.QueryHookOptions<CompletedTodosQuery, CompletedTodosQueryVariables>) => Apollo.useQuery<CompletedTodosQuery, CompletedTodosQueryVariables>(CompletedTodosDocument, baseOptions);
-export const useCompletedTodosLazyQuery = (baseOptions?: Apollo.LazyQueryHookOptions<CompletedTodosQuery, CompletedTodosQueryVariables>) => Apollo.useLazyQuery<CompletedTodosQuery, CompletedTodosQueryVariables>(CompletedTodosDocument, baseOptions);
-export type CompletedTodosQueryHookResult = ReturnType<
-  typeof useCompletedTodosQuery
->;
-export type CompletedTodosLazyQueryHookResult = ReturnType<
-  typeof useCompletedTodosLazyQuery
->;
-export type CompletedTodosQueryResult = Apollo.QueryResult<
-  CompletedTodosQuery,
-  CompletedTodosQueryVariables
->;
+export function useCompletedTodosQuery(baseOptions?: Apollo.QueryHookOptions<CompletedTodosQuery, CompletedTodosQueryVariables>) {
+        return Apollo.useQuery<CompletedTodosQuery, CompletedTodosQueryVariables>(CompletedTodosDocument, baseOptions);
+      }
+export function useCompletedTodosLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CompletedTodosQuery, CompletedTodosQueryVariables>) {
+          return Apollo.useLazyQuery<CompletedTodosQuery, CompletedTodosQueryVariables>(CompletedTodosDocument, baseOptions);
+        }
+export type CompletedTodosQueryHookResult = ReturnType<typeof useCompletedTodosQuery>;
+export type CompletedTodosLazyQueryHookResult = ReturnType<typeof useCompletedTodosLazyQuery>;
+export type CompletedTodosQueryResult = Apollo.QueryResult<CompletedTodosQuery, CompletedTodosQueryVariables>;
 export const GetAccomplishmentAndMessageDocument = gql`
-  query GetAccomplishmentAndMessage(
-    $_gte1: timestamptz
-    $_gte2: timestamptz
-    $_gte3: timestamptz
-  ) {
-    week: todos_aggregate(where: { completed_at: { _gte: $_gte1 } }) {
-      aggregate {
-        count
-      }
-    }
-    month: todos_aggregate(where: { completed_at: { _gte: $_gte2 } }) {
-      aggregate {
-        count
-      }
-    }
-    year: todos_aggregate(where: { completed_at: { _gte: $_gte3 } }) {
-      aggregate {
-        count
-      }
-    }
-    users {
-      message
+    query GetAccomplishmentAndMessage($_gte1: timestamptz, $_gte2: timestamptz, $_gte3: timestamptz) {
+  week: todos_aggregate(where: {completed_at: {_gte: $_gte1}}) {
+    aggregate {
+      count
     }
   }
-`;
+  month: todos_aggregate(where: {completed_at: {_gte: $_gte2}}) {
+    aggregate {
+      count
+    }
+  }
+  year: todos_aggregate(where: {completed_at: {_gte: $_gte3}}) {
+    aggregate {
+      count
+    }
+  }
+  users {
+    message
+  }
+}
+    `;
 
 /**
  * __useGetAccomplishmentAndMessageQuery__
@@ -2778,27 +2672,24 @@ export const GetAccomplishmentAndMessageDocument = gql`
  *   },
  * });
  */
-export const useGetAccomplishmentAndMessageQuery = (baseOptions?: Apollo.QueryHookOptions<GetAccomplishmentAndMessageQuery, GetAccomplishmentAndMessageQueryVariables>) => Apollo.useQuery<GetAccomplishmentAndMessageQuery, GetAccomplishmentAndMessageQueryVariables>(GetAccomplishmentAndMessageDocument, baseOptions);
-export const useGetAccomplishmentAndMessageLazyQuery = (baseOptions?: Apollo.LazyQueryHookOptions<GetAccomplishmentAndMessageQuery, GetAccomplishmentAndMessageQueryVariables>) => Apollo.useLazyQuery<GetAccomplishmentAndMessageQuery, GetAccomplishmentAndMessageQueryVariables>(GetAccomplishmentAndMessageDocument, baseOptions);
-export type GetAccomplishmentAndMessageQueryHookResult = ReturnType<
-  typeof useGetAccomplishmentAndMessageQuery
->;
-export type GetAccomplishmentAndMessageLazyQueryHookResult = ReturnType<
-  typeof useGetAccomplishmentAndMessageLazyQuery
->;
-export type GetAccomplishmentAndMessageQueryResult = Apollo.QueryResult<
-  GetAccomplishmentAndMessageQuery,
-  GetAccomplishmentAndMessageQueryVariables
->;
+export function useGetAccomplishmentAndMessageQuery(baseOptions?: Apollo.QueryHookOptions<GetAccomplishmentAndMessageQuery, GetAccomplishmentAndMessageQueryVariables>) {
+        return Apollo.useQuery<GetAccomplishmentAndMessageQuery, GetAccomplishmentAndMessageQueryVariables>(GetAccomplishmentAndMessageDocument, baseOptions);
+      }
+export function useGetAccomplishmentAndMessageLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAccomplishmentAndMessageQuery, GetAccomplishmentAndMessageQueryVariables>) {
+          return Apollo.useLazyQuery<GetAccomplishmentAndMessageQuery, GetAccomplishmentAndMessageQueryVariables>(GetAccomplishmentAndMessageDocument, baseOptions);
+        }
+export type GetAccomplishmentAndMessageQueryHookResult = ReturnType<typeof useGetAccomplishmentAndMessageQuery>;
+export type GetAccomplishmentAndMessageLazyQueryHookResult = ReturnType<typeof useGetAccomplishmentAndMessageLazyQuery>;
+export type GetAccomplishmentAndMessageQueryResult = Apollo.QueryResult<GetAccomplishmentAndMessageQuery, GetAccomplishmentAndMessageQueryVariables>;
 export const GetColorTypeDocument = gql`
-  query GetColorType {
-    users {
-      id
-      color_type
-      message
-    }
+    query GetColorType {
+  users {
+    id
+    color_type
+    message
   }
-`;
+}
+    `;
 
 /**
  * __useGetColorTypeQuery__
@@ -2815,26 +2706,23 @@ export const GetColorTypeDocument = gql`
  *   },
  * });
  */
-export const useGetColorTypeQuery = (baseOptions?: Apollo.QueryHookOptions<GetColorTypeQuery, GetColorTypeQueryVariables>) => Apollo.useQuery<GetColorTypeQuery, GetColorTypeQueryVariables>(GetColorTypeDocument, baseOptions);
-export const useGetColorTypeLazyQuery = (baseOptions?: Apollo.LazyQueryHookOptions<GetColorTypeQuery, GetColorTypeQueryVariables>) => Apollo.useLazyQuery<GetColorTypeQuery, GetColorTypeQueryVariables>(GetColorTypeDocument, baseOptions);
-export type GetColorTypeQueryHookResult = ReturnType<
-  typeof useGetColorTypeQuery
->;
-export type GetColorTypeLazyQueryHookResult = ReturnType<
-  typeof useGetColorTypeLazyQuery
->;
-export type GetColorTypeQueryResult = Apollo.QueryResult<
-  GetColorTypeQuery,
-  GetColorTypeQueryVariables
->;
+export function useGetColorTypeQuery(baseOptions?: Apollo.QueryHookOptions<GetColorTypeQuery, GetColorTypeQueryVariables>) {
+        return Apollo.useQuery<GetColorTypeQuery, GetColorTypeQueryVariables>(GetColorTypeDocument, baseOptions);
+      }
+export function useGetColorTypeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetColorTypeQuery, GetColorTypeQueryVariables>) {
+          return Apollo.useLazyQuery<GetColorTypeQuery, GetColorTypeQueryVariables>(GetColorTypeDocument, baseOptions);
+        }
+export type GetColorTypeQueryHookResult = ReturnType<typeof useGetColorTypeQuery>;
+export type GetColorTypeLazyQueryHookResult = ReturnType<typeof useGetColorTypeLazyQuery>;
+export type GetColorTypeQueryResult = Apollo.QueryResult<GetColorTypeQuery, GetColorTypeQueryVariables>;
 export const GetUserMessageDocument = gql`
-  query GetUserMessage {
-    users {
-      id
-      message
-    }
+    query GetUserMessage {
+  users {
+    id
+    message
   }
-`;
+}
+    `;
 
 /**
  * __useGetUserMessageQuery__
@@ -2851,15 +2739,12 @@ export const GetUserMessageDocument = gql`
  *   },
  * });
  */
-export const useGetUserMessageQuery = (baseOptions?: Apollo.QueryHookOptions<GetUserMessageQuery, GetUserMessageQueryVariables>) => Apollo.useQuery<GetUserMessageQuery, GetUserMessageQueryVariables>(GetUserMessageDocument, baseOptions);
-export const useGetUserMessageLazyQuery = (baseOptions?: Apollo.LazyQueryHookOptions<GetUserMessageQuery, GetUserMessageQueryVariables>) => Apollo.useLazyQuery<GetUserMessageQuery, GetUserMessageQueryVariables>(GetUserMessageDocument, baseOptions);
-export type GetUserMessageQueryHookResult = ReturnType<
-  typeof useGetUserMessageQuery
->;
-export type GetUserMessageLazyQueryHookResult = ReturnType<
-  typeof useGetUserMessageLazyQuery
->;
-export type GetUserMessageQueryResult = Apollo.QueryResult<
-  GetUserMessageQuery,
-  GetUserMessageQueryVariables
->;
+export function useGetUserMessageQuery(baseOptions?: Apollo.QueryHookOptions<GetUserMessageQuery, GetUserMessageQueryVariables>) {
+        return Apollo.useQuery<GetUserMessageQuery, GetUserMessageQueryVariables>(GetUserMessageDocument, baseOptions);
+      }
+export function useGetUserMessageLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetUserMessageQuery, GetUserMessageQueryVariables>) {
+          return Apollo.useLazyQuery<GetUserMessageQuery, GetUserMessageQueryVariables>(GetUserMessageDocument, baseOptions);
+        }
+export type GetUserMessageQueryHookResult = ReturnType<typeof useGetUserMessageQuery>;
+export type GetUserMessageLazyQueryHookResult = ReturnType<typeof useGetUserMessageLazyQuery>;
+export type GetUserMessageQueryResult = Apollo.QueryResult<GetUserMessageQuery, GetUserMessageQueryVariables>;

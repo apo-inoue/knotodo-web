@@ -1,15 +1,19 @@
 import React, { FC } from 'react';
+import { Touchable, TouchableType, TouchableProps } from './Touchable';
 
-// type RoundButtonProps = {
-//   touchableProps;
-// }; Readonly<TouchableOpacityProps>
-
-export const RoundButton: FC = () => {
-  return <div />;
+export const RoundButton: FC = (
+  props: TouchableProps & TouchableType,
+  { children },
+) => {
+  return (
+    <Touchable
+      variant="contained"
+      color="primary"
+      height={50}
+      width={50}
+      borderRadius={25}
+      {...props}>
+      {children}
+    </Touchable>
+  );
 };
-
-// {...touchableProps}
-// testID={this.props.testID}
-// style={containerStyle}
-// accessibilityLabel={this.props.accessibilityLabel}
-// accessibilityRole="button
