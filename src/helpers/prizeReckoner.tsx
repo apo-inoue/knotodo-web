@@ -11,11 +11,13 @@ export const prizeReckoner: PrizeReckoner = weeklyAccomplishment => {
   };
   if (weeklyAccomplishment > dailyGoal.hard) {
     return 3;
-  } else if (weeklyAccomplishment > dailyGoal.normal) {
-    return 2;
-  } else if (weeklyAccomplishment > dailyGoal.easy) {
-    return 1;
-  } else {
-    return 0;
   }
+  if (weeklyAccomplishment > dailyGoal.normal) {
+    return 2;
+  }
+  if (weeklyAccomplishment > dailyGoal.easy) {
+    return 1;
+  }
+
+  return 0;
 };

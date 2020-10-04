@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { ThemeProvider } from 'styled-components/native';
+import { ThemeProvider } from 'styled-components';
 import { baseTheme } from './theme';
 
 export const CustomThemeProvider: FC = ({ children }) => {

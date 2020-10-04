@@ -1,15 +1,14 @@
-import { ComponentPropsWithoutRef } from 'react'
-import { HTMLProps } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 import styled, { css } from 'styled-components';
 import { border, layout, BorderProps, LayoutProps } from 'styled-system';
 
 export type TextInputTypes = BorderProps & LayoutProps;
 
-export interface CustomProps extends ComponentPropsWithoutRef<'input'>{
+export interface CustomProps extends ComponentPropsWithoutRef<'input'> {
   variant?: 'outlined' | 'underlined';
 }
 
-export type TextInputProps =  CustomProps & TextInputTypes;
+export type TextInputProps = CustomProps & TextInputTypes;
 
 export const TextInput = styled.input<TextInputProps>`
   border-color: ${props => props.theme.colors.main};

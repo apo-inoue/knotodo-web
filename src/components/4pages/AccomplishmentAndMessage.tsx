@@ -19,7 +19,9 @@ export const AccomplishmentAndMessage: FC = () => {
       },
     },
   );
-  const {state: {isDrawerOpen}} = useNavigationCtx();
+  const {
+    state: { isDrawerOpen },
+  } = useNavigationCtx();
   useEffect(() => {
     if (isDrawerOpen) {
       refetch();

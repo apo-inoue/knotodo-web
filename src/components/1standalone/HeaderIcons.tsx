@@ -1,7 +1,7 @@
 import React, { FC, useMemo } from 'react';
 import { useTheme } from 'styled-components';
 import { MdFormatLineSpacing, MdMenu } from 'react-icons/md';
-import { FiFilter } from 'react-icons/Fi';
+import { FaFilter } from 'react-icons/fa';
 import { Box } from '../../ui';
 
 import { useSortFilterCtx } from '../../containers/contexts/sortFilter';
@@ -46,7 +46,7 @@ export const HeaderIconsRight: FC<HeaderIconsRightProps> = ({
         onClick={onPressSort}
       />
       <Box mr={3} />
-      <FiFilter
+      <FaFilter
         name={iconName}
         size={24}
         color={theme.colors.white}

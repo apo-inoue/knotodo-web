@@ -7,7 +7,12 @@ type ActivityIndicatorProps = FlexProps;
 
 export const Loader = styled.div<ActivityIndicatorProps>`
   align-self: center;
+  background-color: red;
   display: flex;
+  height: 20px;
+  margin-top: 200px;
+  width: 20px;
+
   ${flex}
 `;
 

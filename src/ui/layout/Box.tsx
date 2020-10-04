@@ -4,7 +4,7 @@ import {
   color,
   space,
   layout,
-  flex,
+  flexbox,
   border,
   position,
   BorderProps,
@@ -27,10 +27,14 @@ type View = {
 
 export const Box = styled.div<View>`
   /* box-sizing: border-box; */
+  display: flex;
+  flex: 1 1;
+  flex-direction: row;
   min-width: 0;
+
   ${position}
   ${space}
-  ${flex}
+  ${flexbox}
   ${border}
   ${layout}
   ${color}

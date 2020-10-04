@@ -1,4 +1,4 @@
-import React, { FC, ChangeEvent } from 'react';
+import React, { FC } from 'react';
 import { Box, PrimaryButton } from '../../ui';
 import { Todos } from '../../types/graphql';
 

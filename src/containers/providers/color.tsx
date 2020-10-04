@@ -1,18 +1,20 @@
 import React, { FC, useState, useCallback } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
+import { ThemeProvider } from 'styled-components';
 import { ColorCtxProvider } from '../contexts/color';
-import { useGetColorTypeQuery, ColorTypes_Enum } from '../../types/graphql';
-import { ThemeProvider } from 'styled-components/native';
+import {
+  useGetColorTypeQuery,
+  ColorTypes_Enum,
+  useUpdateColorTypeMutation,
+} from '../../types/graphql';
 import { baseTheme } from '../../theme/theme';
-import { useUpdateColorTypeMutation } from '../../types/graphql';
+
 import { GET_COLOR_TYPE } from '../../graphql/query/users';
 import { colorConstants } from '../../theme/color';
 import { ScreenLoader } from '../../ui/utils/Loader';
 
 export const ColorProvider: FC = ({ children }) => {
-  const {
-    isAuthenticated
-  } = useAuth0();
+  const { isAuthenticated } = useAuth0();
 
   const [color, setColor] = useState<ColorTypes_Enum>('BRAND');
 
@@ -69,7 +71,7 @@ export const ColorProvider: FC = ({ children }) => {
   return (
     <ColorCtxProvider value={value}>
       {isAuthenticated ? (
-        <ThemeProvider theme={customTheme ? customTheme : loadingTheme}>
+        <ThemeProvider theme={customTheme || loadingTheme}>
           {children}
         </ThemeProvider>
       ) : (

@@ -4,13 +4,13 @@ import {
   useAllCategoryQuery,
   useInsertCategoryMutation,
   AllCategoryQuery,
+  useUpdateCategoryMutation,
+  useDeleteCategoryMutation,
 } from '../../types/graphql';
 import { NoDataMessage, ErrorMessage } from '../1standalone';
 import { CategorySettingCollection } from '../3collection';
 import { useCategoryCtx } from '../../containers/contexts/category';
 import { ALL_CATEGORY } from '../../graphql/query/categories';
-import { useUpdateCategoryMutation } from '../../types/graphql';
-import { useDeleteCategoryMutation } from '../../types/graphql';
 
 export const CategorySetting: FC = () => {
   const {
@@ -23,8 +23,21 @@ export const CategorySetting: FC = () => {
       const existingCategories = cache.readQuery<AllCategoryQuery>({
         query: ALL_CATEGORY,
       });
-      const newCategory = updateData!.insert_categories!.returning[0];
-      const newCategories = [newCategory, ...existingCategories!.categories];
+      const newCategory = updateData?.insert_categories?.returning[0] ?? {
+        __typename: 'categories',
+        category: '',
+        id: '',
+      };
+      const newCategories = [
+        newCategory,
+        ...(existingCategories?.categories ?? [
+          {
+            __typename: 'categories',
+            category: '',
+            id: '',
+          },
+        ]),
+      ];
       cache.writeQuery<AllCategoryQuery>({
         query: ALL_CATEGORY,
         data: { __typename: 'query_root', categories: newCategories },
@@ -39,9 +52,10 @@ export const CategorySetting: FC = () => {
       const existingCategories = cache.readQuery<AllCategoryQuery>({
         query: ALL_CATEGORY,
       });
-      const newCategories = existingCategories!.categories.filter(
-        c => c.id !== updateData!.update_categories_by_pk!.id,
-      );
+      const newCategories =
+        existingCategories?.categories.filter(
+          c => c.id !== updateData?.update_categories_by_pk?.id ?? '',
+        ) ?? [];
       cache.writeQuery<AllCategoryQuery>({
         query: ALL_CATEGORY,
         data: { __typename: 'query_root', categories: newCategories },
@@ -55,7 +69,7 @@ export const CategorySetting: FC = () => {
         __typename: 'mutation_root',
         update_categories_by_pk: {
           __typename: 'categories',
-          id: id,
+          id,
           category: '',
         },
       },
@@ -63,7 +77,7 @@ export const CategorySetting: FC = () => {
   };
   const [updateCategory] = useUpdateCategoryMutation();
   const updateCategoryHandler = (id: string, c: string) => {
-    updateCategory({ variables: { id: id, category: c } });
+    updateCategory({ variables: { id, category: c } });
   };
 
   if (loading) {

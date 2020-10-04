@@ -1,5 +1,4 @@
-import styled from 'styled-components/native';
-import { PickerProps } from 'react-native';
+import styled from 'styled-components';
 import {
   space,
   border,
@@ -15,19 +14,12 @@ export type CustomPickerProps = LayoutProps &
   FlexboxProps &
   SpaceProps &
   BorderProps &
-  FlexboxProps &
-  PickerProps;
+  FlexboxProps;
 
-const Picker = styled.Picker<CustomPickerProps>`
+export const Picker = styled.div<CustomPickerProps>`
   width: 100%;
   ${layout}
   ${flexbox}
   ${space}
   ${border}
 `;
-
-Picker.defaultProps = {
-  itemStyle: { fontSize: 16, flex: 1 },
-};
-
-export { Picker };

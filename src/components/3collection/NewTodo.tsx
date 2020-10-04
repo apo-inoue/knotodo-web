@@ -65,7 +65,7 @@ export const NewTodo: FC<NewTodoProps> = ({ categories, onPress }) => {
           placeholder="タイトル"
           autoFocus
           err={error}
-          onChange={(e) => titleInputHandler(e.target.value)}
+          onChange={e => titleInputHandler(e.target.value)}
           value={title}
         />
       </Box>

@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { Todos } from '../../types/graphql';
 import { Box } from '../../ui';
 import { TodoListItem, SwipeArchiveTodo } from '../2single';
@@ -18,8 +18,6 @@ type ArchiveTodoSwipeProps = {
   onPress: (id: string) => void;
   onRestoreToday: (id: string) => void;
   onRestoreNotToday: (id: string) => void;
-  enableScrollHandler: () => void;
-  disableScrollHandler: () => void;
 };
 
 export const ArchiveTodoSwipe: FC<ArchiveTodoSwipeProps> = ({
@@ -27,21 +25,15 @@ export const ArchiveTodoSwipe: FC<ArchiveTodoSwipeProps> = ({
   onPress,
   onRestoreToday,
   onRestoreNotToday,
-  enableScrollHandler,
-  disableScrollHandler,
 }) => {
-  const [isPressed, setIsPressed] = useState(false);
   const onPressEffectHandler = () => {
     onPress(todo.id);
-    setIsPressed(true);
   };
   const onRestoreTodayEffectHandler = () => {
     onRestoreToday(todo.id);
-    setIsPressed(true);
   };
   const onRestoreNotTodayEffectHandler = () => {
     onRestoreNotToday(todo.id);
-    setIsPressed(true);
   };
 
   return (

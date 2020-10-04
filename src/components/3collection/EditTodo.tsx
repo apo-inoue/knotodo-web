@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, ChangeEvent, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { PrimaryButton, Box, UnderlinedTextForm } from '../../ui';
 import { Categories, UpdateTodoMutationVariables } from '../../types/graphql';
@@ -40,10 +40,10 @@ export const EditTodo: FC<EditTodoProps> = ({ categories, onPress }) => {
       setError('入力してください');
     } else {
       onPress({
-        id: id,
-        title: title,
-        urgency: urgency,
-        workload: workload,
+        id,
+        title,
+        urgency,
+        workload,
         category_id: category,
       });
       history.goBack();
@@ -56,7 +56,9 @@ export const EditTodo: FC<EditTodoProps> = ({ categories, onPress }) => {
         <UnderlinedTextForm
           placeholder="タイトル"
           err={error}
-          onChange={(e: any) => titleInputHandler(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            titleInputHandler(e.target.value)
+          }
           value={title}
         />
       </Box>
@@ -83,7 +85,7 @@ export const EditTodo: FC<EditTodoProps> = ({ categories, onPress }) => {
         <PrimaryButton
           variant="outlined"
           width="30%"
-          onClick={history.goBack}
+          onClick={() => history.goBack()}
           text="キャンセル"
         />
         <Box mr={3} />

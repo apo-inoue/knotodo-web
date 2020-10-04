@@ -1,8 +1,7 @@
-import React, { FC } from 'react';
+import React, { FC, HTMLProps } from 'react';
 import { MdCheckBox, MdCheckBoxOutlineBlank } from 'react-icons/md';
 import { useTheme } from 'styled-components';
 import { Touchable } from '../button/Touchable';
-import { HTMLProps } from 'react';
 
 type CheckBoxProps = {
   checked: boolean;
@@ -10,7 +9,11 @@ type CheckBoxProps = {
   checkColor?: string;
 } & HTMLProps<HTMLButtonElement>;
 
-export const CheckBox: FC<CheckBoxProps> = ( { checked, checkColor, onClick }) => {
+export const CheckBox: FC<CheckBoxProps> = ({
+  checked,
+  checkColor,
+  onClick,
+}) => {
   const theme = useTheme();
 
   return (

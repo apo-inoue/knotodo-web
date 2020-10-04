@@ -1,10 +1,6 @@
-import React, { FC, useState } from 'react';
-import {
-  Box,
-  Text,
-  PrimaryButton,
-} from '../../ui';
+import React, { FC, ChangeEvent, useState } from 'react';
 import { useTheme } from 'styled-components';
+import { Box, Text, PrimaryButton } from '../../ui';
 import { UnderlinedTextForm } from '../../ui/input/TextForm';
 
 type MessageSettingProps = {
@@ -31,19 +27,17 @@ export const MessageSetting: FC<MessageSettingProps> = ({
   };
 
   return (
-    <Box
-      width="100%"
-      flex="1 1"
-      justifyContent="center"
-      alignItems="center">
+    <Box width="100%" flex="1 1" justifyContent="center" alignItems="center">
       <Text textAlign="center" color={theme.colors.blacks[7]}>
         今のヒトコト
       </Text>
-      <Text textAlign="center">{message ? message : '未設定'}</Text>
+      <Text textAlign="center">{message || '未設定'}</Text>
       <Box mt="24px" />
       <UnderlinedTextForm
         err={error}
-        onChange={(e: any) => onChangeTextHandler(e.target.value)}
+        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+          onChangeTextHandler(e.target.value)
+        }
         value={value}
       />
       <Text color={theme.colors.danger}>{error}</Text>

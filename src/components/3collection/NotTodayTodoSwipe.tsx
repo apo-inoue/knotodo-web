@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { TodoListItem } from '../2single';
 import { Todos } from '../../types/graphql';
 import { Box } from '../../ui';
@@ -19,8 +19,6 @@ type NotTodayTodoSwipeProps = {
   onPress: (id: string) => void;
   onComplete: (id: string) => void;
   onDelete: (id: string) => void;
-  disableScrollHandler: () => void;
-  enableScrollHandler: () => void;
 };
 
 export const NotTodayTodoSwipe: FC<NotTodayTodoSwipeProps> = ({
@@ -28,17 +26,12 @@ export const NotTodayTodoSwipe: FC<NotTodayTodoSwipeProps> = ({
   onPress,
   onComplete,
   onDelete,
-  disableScrollHandler,
-  enableScrollHandler,
 }) => {
-  const [isPressed, setIsPressed] = useState(false);
   const onPressEffectHandler = () => {
     onPress(todo.id);
-    setIsPressed(true);
   };
   const onCompleteEffectHandler = () => {
     onComplete(todo.id);
-    setIsPressed(true);
   };
 
   return (

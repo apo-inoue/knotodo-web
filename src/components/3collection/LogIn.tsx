@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import { Box, Text, PrimaryButton, Image, Divider } from '../../ui';
 import { useTheme } from 'styled-components';
-import knot from '../../../assets/knot-color.png'
+import { Box, Text, PrimaryButton, Divider } from '../../ui';
+import knot from '../../assets/knot-color.png';
 
 type LogIn = {
   onLogIn: () => void;
@@ -14,9 +14,7 @@ export const LogIn: FC<LogIn> = ({ onLogIn }) => {
     <>
       <Box flexDirection="row" alignItems="flex-end">
         <Box mr={2}>
-          <img
-            src={knot}
-          />
+          <img alt="logo" src={knot} />
         </Box>
         <Box height={40}>
           <Text fontSize={40} lineHeight="50px" fontWeight="bold" color="main">

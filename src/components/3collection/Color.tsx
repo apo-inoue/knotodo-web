@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { useHistory } from 'react-router-dom';
-import { colorConstants, ColorType } from '../../theme/color';
+import { colorConstants } from '../../theme/color';
 import { PrimaryButton, Box } from '../../ui';
 import { ColorSelectItem } from '../2single';
 import { useColorCtx } from '../../containers/contexts/color';
@@ -17,7 +17,11 @@ export const Color: FC = () => {
     <Box width="100%" height="100%">
       <Box flexDirection="column" flexBasis="400px">
         {colorConstants.map(colorConstant => (
-          <ColorSelectItem itemColor={colorConstant.color} hex={colorConstant.hex} key={colorConstant.color} />
+          <ColorSelectItem
+            itemColor={colorConstant.color}
+            hex={colorConstant.hex}
+            key={colorConstant.color}
+          />
         ))}
       </Box>
       <Box

@@ -25,12 +25,12 @@ type TodoListItem = {
 
 export const TodoListItem: FC<TodoListItem> = ({ todo, buttonAction }) => {
   const history = useHistory();
-  const location = useLocation()
+  const location = useLocation();
   const {
     editTodo: { todoMountHandler },
   } = useTodoCtx();
-  const isToday = location.pathname === 'Today' ? true : false;
-  const isCompleted = location.pathname === 'Archive' ? true : false;
+  const isToday = location.pathname === 'Today';
+  const isCompleted = location.pathname === 'Archive';
   const mountAndNavigateHandler = () => {
     const mountTodo: { id: string } & TodoState = {
       id: todo.id,
@@ -46,28 +46,24 @@ export const TodoListItem: FC<TodoListItem> = ({ todo, buttonAction }) => {
   };
 
   return (
-      <Box flexDirection="row" height={50}>
-        <Box flex="1 1" justifyContent="center">
-          <Touchable
-            p={0}
-            justifyContent="center"
-            onClick={mountAndNavigateHandler}>
-            <Text textAlign="left" ellipsis>
-              {todo.title}
-            </Text>
-          </Touchable>
-        </Box>
-        <Box
-          width={100}
-          flexDirection="row"
-          my="auto"
-          justifyContent="flex-end">
-          <PrimaryButton
-            variant="outlined"
-            onClick={() => buttonAction.onPress(todo.id)}
-            text={buttonAction.label}
-          />
-        </Box>
+    <Box flexDirection="row" height={50}>
+      <Box flex="1 1" justifyContent="center">
+        <Touchable
+          p={0}
+          justifyContent="center"
+          onClick={mountAndNavigateHandler}>
+          <Text textAlign="left" ellipsis>
+            {todo.title}
+          </Text>
+        </Touchable>
       </Box>
+      <Box width={100} flexDirection="row" my="auto" justifyContent="flex-end">
+        <PrimaryButton
+          variant="outlined"
+          onClick={() => buttonAction.onPress(todo.id)}
+          text={buttonAction.label}
+        />
+      </Box>
+    </Box>
   );
 };

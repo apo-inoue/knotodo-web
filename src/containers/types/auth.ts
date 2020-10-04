@@ -1,8 +1,9 @@
 export type AuthState = {
-  token: string | null, standBy: boolean
-}
+  token: string | null;
+  standBy: boolean;
+};
 
 export type AuthCtxType = {
-  state: AuthState
-  seedDataStandByHandler: () => void
+  state: AuthState;
+  seedDataStandByHandler: () => void;
 };

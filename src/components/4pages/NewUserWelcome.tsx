@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
-import { Container, Text, Loader } from '../../ui';
 import { useTheme } from 'styled-components';
+import { Container, Text, Loader } from '../../ui';
 import { useAuthCtx } from '../../containers/contexts/auth';
 import {
   useSeedDataCategoryMutation,
@@ -31,7 +31,6 @@ export const NewUserWelcome: FC = () => {
       seedDataTodo();
     }
   }, [seedDataTodo, isCategoryStandBy]);
-  console.log(data);
 
   return (
     <Container centerContent>

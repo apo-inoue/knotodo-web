@@ -57,6 +57,7 @@ module.exports = {
   ],
   root: true,
   rules: {
+    "camelcase": 'off',
     'linebreak-style': ['error', 'unix'],
     'newline-before-return': 'error',
     'no-console': 'warn',
@@ -76,7 +77,6 @@ module.exports = {
         markers: ['/'],
       },
     ],
-    'camel-case': never,
     // @typescript-eslint
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-member-accessibility': 'off',
@@ -89,6 +89,7 @@ module.exports = {
         varsIgnorePattern: '[Rr]eact',
       },
     ],
+    '@typescript-eslint/camelcase': 'off',
 
     // airbnb
     'no-restricted-syntax': [

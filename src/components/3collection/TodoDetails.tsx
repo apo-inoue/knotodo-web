@@ -19,7 +19,7 @@ export const TodoDetails: FC<TodoDetailsProps> = ({ todo }) => {
       <Text>{title}</Text>
       <Divider />
       <TodoWorkload workload={workload} />
-      <Touchable variant="outlined" onClick={() => console.log(todo.id)}>
+      <Touchable variant="outlined">
         <Text>{id}</Text>
       </Touchable>
       <Box mt={4}>
@@ -29,7 +29,7 @@ export const TodoDetails: FC<TodoDetailsProps> = ({ todo }) => {
         <PrimaryButton
           variant="outlined"
           width="30%"
-          onClick={history.goBack}
+          onClick={() => history.goBack()}
           text="戻る"
         />
         <Box mr={3} />

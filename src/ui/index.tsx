@@ -16,6 +16,7 @@ export { ImageBackground } from './image/ImageBackground';
 export { TextInput } from './input/TextInput';
 export { OutlinedTextForm, UnderlinedTextForm } from './input/TextForm';
 export { RadioButton } from './input/RadioButton';
+export { Switch, Toggle } from './input/Switch';
 export { CheckBox } from './input/CheckBox';
 export { Loader, ScreenLoader } from './utils/Loader';
 export { Divider } from './utils/Divider';

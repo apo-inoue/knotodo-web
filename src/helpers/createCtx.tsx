@@ -7,7 +7,9 @@ export function createCtx<A extends unknown | null>() {
     const c = useContext(ctx);
     if (c === undefined)
       throw new Error('useCtx must be inside a Provider with a value');
+
     return c;
   }
+
   return [useCtx, ctx.Provider] as const; // 'as const' makes TypeScript infer a tuple
 }

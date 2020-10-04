@@ -1,10 +1,12 @@
-import React, { FC, useCallback, useEffect } from 'react';
+import React, { FC } from 'react';
 import { useHistory } from 'react-router-dom';
 import {
   useNotTodayTodosQuery,
   useSetTodayTodoMutation,
   useCompleteToDoMutation,
   NotTodayTodosQuery,
+  useDeleteToDoMutation,
+  CompletedTodosQuery,
 } from '../../types/graphql';
 import { NOT_TODAY_TODOS } from '../../graphql/query/todos';
 import { Container, ScreenLoader } from '../../ui';
@@ -13,10 +15,6 @@ import { NotTodayTodosCollection } from '../3collection';
 import { STACK_ROUTE_NAMES } from '../routes';
 import { useSortFilterCtx } from '../../containers/contexts/sortFilter';
 import { useTodoCtx } from '../../containers/contexts/todo';
-import {
-  useDeleteToDoMutation,
-  CompletedTodosQuery,
-} from '../../types/graphql';
 
 export const NotTodayTodos: FC = () => {
   const history = useHistory();
@@ -27,7 +25,7 @@ export const NotTodayTodos: FC = () => {
     },
   } = useSortFilterCtx();
   const categoryIdsVariables = isAll ? null : categoryIds;
-  const { loading, error, data, refetch } = useNotTodayTodosQuery({
+  const { loading, error, data } = useNotTodayTodosQuery({
     variables: { [sortState.key]: sortState.order, _in: categoryIdsVariables },
   });
   // ---------- setToday ----------
@@ -40,9 +38,10 @@ export const NotTodayTodos: FC = () => {
           _in: categoryIdsVariables,
         },
       });
-      const newTodos = existingTodos!.todos.filter(
-        t => t.id !== updateData!.update_todos!.returning[0].id,
-      );
+      const newTodos =
+        existingTodos?.todos.filter(
+          t => t.id !== updateData?.update_todos?.returning[0].id ?? '',
+        ) ?? [];
       cache.writeQuery<NotTodayTodosQuery>({
         query: NOT_TODAY_TODOS,
         variables: {
@@ -66,9 +65,10 @@ export const NotTodayTodos: FC = () => {
           _in: categoryIdsVariables,
         },
       });
-      const newTodos = existingTodos!.todos.filter(
-        t => t.id !== updateData!.update_todos!.returning[0].id,
-      );
+      const newTodos =
+        existingTodos?.todos.filter(
+          t => t.id !== updateData?.update_todos?.returning[0].id ?? '',
+        ) ?? [];
       cache.writeQuery<NotTodayTodosQuery>({
         query: NOT_TODAY_TODOS,
         variables: {
@@ -100,9 +100,10 @@ export const NotTodayTodos: FC = () => {
           _in: categoryIdsVariables,
         },
       });
-      const newTodos = existingTodos!.todos.filter(
-        t => t.id !== updateData!.update_todos!.returning[0].id,
-      );
+      const newTodos =
+        existingTodos?.todos.filter(
+          t => t.id !== updateData?.update_todos?.returning[0].id ?? '',
+        ) ?? [];
       cache.writeQuery<CompletedTodosQuery>({
         query: NOT_TODAY_TODOS,
         variables: {
@@ -117,11 +118,11 @@ export const NotTodayTodos: FC = () => {
     deleteToDo({ variables: { _eq: id } });
   };
 
-  useEffect(
-    useCallback(() => {
-      refetch();
-    }, [refetch]),
-  );
+  // useEffect(
+  //   useCallback(() => {
+  //     refetch();
+  //   }, [refetch]),
+  // );
 
   if (loading) {
     return <ScreenLoader />;

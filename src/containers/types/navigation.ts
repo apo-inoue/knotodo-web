@@ -1,5 +1,5 @@
 export type NavigationState = {
-  isDrawerOpen: boolean
+  isDrawerOpen: boolean;
 };
 
 export type NavigationCtxType = {

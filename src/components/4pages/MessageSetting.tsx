@@ -13,7 +13,11 @@ export const MessageSetting: FC = () => {
   const { data, loading, error } = useGetUserMessageQuery();
   const [updateUserMessage] = useUpdateUserMessageMutation({
     update(cache, { data: updateData }) {
-      const newUser = updateData!.update_users!.returning[0];
+      const newUser = updateData?.update_users?.returning[0] ?? {
+        __typename: 'users',
+        id: '',
+        message: '',
+      };
       cache.writeQuery<GetUserMessageQuery>({
         query: GET_USER_MESSAGE,
         data: {
@@ -25,7 +29,7 @@ export const MessageSetting: FC = () => {
   });
   const updateUserMessageHandler = (message: string) => {
     updateUserMessage({
-      variables: { message: message, _eq: data?.users[0].id ?? '' },
+      variables: { message, _eq: data?.users[0].id ?? '' },
       optimisticResponse: {
         __typename: 'mutation_root',
         update_users: {
@@ -34,8 +38,8 @@ export const MessageSetting: FC = () => {
           returning: [
             {
               __typename: 'users',
-              id: data!.users[0].id,
-              message: message,
+              id: data?.users[0].id ?? '',
+              message,
             },
           ],
         },

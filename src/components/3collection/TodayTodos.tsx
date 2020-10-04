@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Box, Divider } from '../../ui';
 import { Todos } from '../../types/graphql';
@@ -39,14 +39,6 @@ export const TodayTodos: FC<TodayTodos> = ({
     history.push(STACK_ROUTE_NAMES.新規作成);
   };
 
-  const [isScrollable, setIsScrollable] = useState<boolean>(true);
-  const disableScrollHandler = () => {
-    setIsScrollable(false);
-  };
-  const enableScrollHandler = () => {
-    setIsScrollable(true);
-  };
-
   return (
     <>
       <Box mt={2} width="100%" flex={1}>
@@ -54,21 +46,19 @@ export const TodayTodos: FC<TodayTodos> = ({
           const isLastRow = todos.length - 1 === index;
 
           return (
-            <Box>
-            <TodayTodoSwipe
-              todo={todo}
-              onPress={onPress}
-              onPostpone={onPostpone}
-              onDelete={onDelete}
-              disableScrollHandler={disableScrollHandler}
-              enableScrollHandler={enableScrollHandler}
-            />
-            <Box width="100%" />
-            <Divider />
-            {/* // NOTE: FABが重なって押しにくくなるのを避けるため余白を追加する */}
-            {isLastRow && <Box mb={5} />}
-          </Box>
-          )
+            <Box key={todo.id}>
+              <TodayTodoSwipe
+                todo={todo}
+                onPress={onPress}
+                onPostpone={onPostpone}
+                onDelete={onDelete}
+              />
+              <Box width="100%" />
+              <Divider />
+              {/* // NOTE: FABが重なって押しにくくなるのを避けるため余白を追加する */}
+              {isLastRow && <Box mb={5} />}
+            </Box>
+          );
         })}
       </Box>
       <AddFab onClick={mountAndNavigateHandler} />

@@ -1,4 +1,4 @@
-import styled, {StyledFunction } from 'styled-components';
+import styled from 'styled-components';
 import {
   space,
   border,
@@ -10,13 +10,14 @@ import {
   FlexboxProps,
 } from 'styled-system';
 
-export type TouchableType =  LayoutProps &
-FlexboxProps &
-SpaceProps &
-BorderProps &
-FlexboxProps;
+export type TouchableType = LayoutProps &
+  FlexboxProps &
+  SpaceProps &
+  BorderProps &
+  FlexboxProps;
 
-export interface TouchableProps extends React.ComponentPropsWithoutRef<'button'>{
+export interface TouchableProps
+  extends React.ComponentPropsWithoutRef<'button'> {
   variant?: 'outlined' | 'contained' | 'text';
   color?: 'primary' | 'muted' | 'danger';
 }

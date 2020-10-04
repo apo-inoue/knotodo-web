@@ -1,5 +1,4 @@
-import React, { FC, useState } from 'react';
-import { ListRenderItemInfo } from 'react-native';
+import React, { FC } from 'react';
 import { Box, Divider } from '../../ui';
 import { Todos } from '../../types/graphql';
 import { ArchiveTodoSwipe } from './ArchiveTodoSwipe';
@@ -27,33 +26,23 @@ export const ArchiveTodos: FC<ArchiveTodosType> = ({
   onRestoreToday,
   onRestoreNotToday,
 }) => {
-  const [isScrollable, setIsScrollable] = useState(true);
-  const enableScrollHandler = () => {
-    setIsScrollable(true);
-  };
-  const disableScrollHandler = () => {
-    setIsScrollable(false);
-  };
-
   return (
     <Box mt={2} width="100%">
       {todos.map((todo, index) => {
-          const isLastRow = todos.length - 1 === index;
+        const isLastRow = todos.length - 1 === index;
 
-          return (
-            <Box>
+        return (
+          <Box key={todo.id}>
             <ArchiveTodoSwipe
               todo={todo}
               onPress={onPress}
               onRestoreToday={onRestoreToday}
               onRestoreNotToday={onRestoreNotToday}
-              enableScrollHandler={enableScrollHandler}
-              disableScrollHandler={disableScrollHandler}
             />
             <Divider />
             {isLastRow && <Box mb={5} />}
           </Box>
-          )
+        );
       })}
     </Box>
   );

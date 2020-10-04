@@ -23,17 +23,43 @@ export const AccomplishmentAndMessage: FC<AccomplishmentAndMessageProps> = ({
       case 3:
         return (
           <Text textAlign="center" fontWeight="bold">
-            ✨✨Excellent work! ✨✨
+            <span role="img" aria-label="star">
+              ✨✨
+            </span>
+            Excellent work!
+            <span role="img" aria-label="star">
+              ✨✨
+            </span>
           </Text>
         );
       case 2:
-        return <Text textAlign="center">✨Well done! ✨</Text>;
+        return (
+          <Text textAlign="center">
+            <span role="img" aria-label="star">
+              ✨
+            </span>
+            Well done!
+            <span role="img" aria-label="star">
+              ✨
+            </span>
+          </Text>
+        );
       case 1:
-        return <Text textAlign="center">✨Good job! ✨</Text>;
+        return (
+          <Text textAlign="center">
+            <span role="img" aria-label="star">
+              ✨
+            </span>
+            Good job!
+            <span role="img" aria-label="star">
+              ✨
+            </span>
+          </Text>
+        );
       case 0:
-        return <Text textAlign="center">Let's start it today</Text>;
+        return <Text textAlign="center">Let&apos;s start it today</Text>;
       default:
-        return <Text textAlign="center">Let's start it today</Text>;
+        return <Text textAlign="center">Let&apos;s start it today</Text>;
     }
   };
   const accomplishmentIntervals = [
@@ -64,7 +90,7 @@ export const AccomplishmentAndMessage: FC<AccomplishmentAndMessageProps> = ({
         <Text textAlign="center" color={theme.colors.blacks[7]}>
           ヒトコト
         </Text>
-        <Text textAlign="center">{message ? message : '未設定'}</Text>
+        <Text textAlign="center">{message || '未設定'}</Text>
       </Box>
     </Box>
   );
